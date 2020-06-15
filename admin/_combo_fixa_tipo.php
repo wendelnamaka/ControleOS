@@ -1,10 +1,11 @@
-
 <div class="form-group">
     <label>Tipo</label>
-    <select class="form-control">
+    <select class="form-control" id="tipo" name="tipo" onchange="ExibirTipo(this.value)">
         <option value="">Selecione</option>
-        <option value="1">Administrador</option>
-        <option value="2">Setor</option>
-        <option value="3">Técnico</option>
+        <option value="1"<?= isset($tipo) ? ($tipo == 1 ? 'selected' : '' ): '' ?> >Administrador</option>
+        <option value="2"<?= isset($tipo) ? ($tipo == 2 ? 'selected' : '' ): '' ?> >Setor</option>
+        <option value="3"<?= isset($tipo) ? ($tipo == 3 ? 'selected' : '' ): '' ?> >Técnico</option>
     </select>
+    
+    <label id="val_tipo" class="Validar"></label>
 </div>

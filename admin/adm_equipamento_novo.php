@@ -23,27 +23,29 @@
                     <hr />
                     <div class="form-group">
                         <label>Tipo</label>
-                        <select class="form-control">
-                            <option value="">Selecione</option>                            
+                        <select class="form-control" id="tipo">
+                            <option value="">Selecione</option> 
+                            <option value="1">RH</option> 
                         </select>
+                        <label id="val_tipo" class="Validar"></label>
                     </div>                    
                     <div class="form-group">
                         <label>Modelo</label>
-                        <select class="form-control">
+                        <select class="form-control" id="modelo">
                             <option value="">Selecione</option>                            
                         </select>
                     </div>                    
                     <div class="form-group">
                         <label>Identificação</label>
-                        <input class="form-control" placeholder="Digite aqui..." />
+                        <input class="form-control" placeholder="Digite aqui..." id="setor"/>
+                        <label id="val_setor" class="Validar"></label>
                     </div>
                     <div class="form-group">
                         <label>Descrição</label>
                         <textarea class="form-control" rows="4" placeholder="Digite aqui..."></textarea>
                     </div>
 
-                    <center><button type="submit" class="btn btn-success">Salvar</button></center>
-
+                    <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return Validar(1)">Salvar</button></center>
 
                 </div>
                 <!-- /. PAGE INNER  -->

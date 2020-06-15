@@ -24,10 +24,9 @@
                             if (isset($ret))
                                 ExibirMsg($ret);
                             ?>
-                            <h2>Realizar Movimento</h2>
-                            <h5>Lance seus movimentos aqui!</h5>
+                           
 
-                        </div>
+                        </div> <h2>Atender Chamado</h2>
                     </div>
                     <!-- /. ROW  -->
                     <hr />

@@ -28,7 +28,7 @@
                     
                     ?>
 
-                    <center><button type="info" class="btn btn-info">Procurar</button></center>
+                    <center><button type="info" class="btn btn-info" >Procurar</button></center>
                     <hr/>
 
                     <div class="col-md-12">
