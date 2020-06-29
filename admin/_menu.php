@@ -15,7 +15,7 @@
             </li>  
 
             <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Funcionário<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-user fa-3x"></i>Funcionário<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="adm_funcionario_novo.php">Novo</a>
@@ -28,7 +28,7 @@
             </li>  
 
             <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Tipo<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-cogs  fa-3x"></i>Tipo De Equipamento<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="adm_tipo_gerenciar.php">Gerenciar</a>
@@ -37,7 +37,7 @@
             </li>  
             
             <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Modelo<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-desktop fa-3x"></i>Modelo Do Equipamento <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="adm_modelo_gerenciar.php">Gerenciar</a>
@@ -46,7 +46,7 @@
             </li>  
             
              <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i>Equipamento<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-cog fa-3x"></i>Equipamento<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="adm_equipamento_novo.php">Novo</a>

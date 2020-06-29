@@ -1,5 +1,8 @@
 <?php
 
+   // echo "<pre>";
+   // print_r($vofunc);
+   // echo "</pre>";
 class FuncionarioVO {
 
     private $id_funcionario;
@@ -40,7 +43,7 @@ class FuncionarioVO {
     }
 
     public function setId_funcionario($id_funcionario) {
-        $this->id_funcionario = trim($id_funcionario);
+        $this->id_funcionario = $id_funcionario;
     }
 
     public function setEmail_funcionario($email_funcionario) {
@@ -56,15 +59,15 @@ class FuncionarioVO {
     }
 
     public function setId_usuario_funcionario($id_usuario_funcionario) {
-        $this->id_usuario_funcionario = trim($id_usuario_funcionario);
+        $this->id_usuario_funcionario = $id_usuario_funcionario;
     }
 
     public function setId_usuario_adm($id_usuario_adm) {
-        $this->id_usuario_adm = trim($id_usuario_adm);
+        $this->id_usuario_adm = $id_usuario_adm;
     }
 
     public function setId_setor($id_setor) {
-        $this->id_setor = trim($id_setor);
+        $this->id_setor = $id_setor;
     }
 
 

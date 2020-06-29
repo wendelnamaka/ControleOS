@@ -23,7 +23,7 @@ class Tipo_sql {
         
     }
     public static function ConsultarTipo() {
-        $sql = 'select id_usuario,nome_tipo, id_tipo from tb_tipo order by nome_tipo';
+        $sql = 'select id_usuario, nome_tipo, id_tipo from tb_tipo order by nome_tipo';
         
         return $sql;
     }

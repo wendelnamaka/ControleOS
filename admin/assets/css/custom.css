@@ -42,7 +42,7 @@ body {
     border:1px solid #f3f3f3;
 }
 h2 {
-    color: #a715c1;
+    color: #661e73;
 }
 h4 {
     padding-top:10px;
@@ -321,10 +321,10 @@ border:0px solid black;
      
 }
 .navbar-header {
-    background: #A70303;
+    background: #A715C1;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-background-color: #B40101;
+background-color: #A715C1;
 }
 .navbar-default .navbar-toggle {
 border-color: #fff;

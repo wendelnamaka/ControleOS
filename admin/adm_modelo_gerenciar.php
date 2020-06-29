@@ -59,13 +59,13 @@ $modelo = $ctrl->ConsultarModelo();
                     <hr />
 
                     <form method="post" action="adm_modelo_gerenciar.php">
-                        <div class="form-group" id="divNomeSetor">
+                        <div class="form-group" id="divModelo">
                             <label>Nome do modelo</label>
                             <input class="form-control" placeholder="Digite aqui......." name="nome" id="nome"/>
                             <label class="Validar"id="val_setor"></label>
                         </div>
 
-                        <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return Validar(2)">Salvar</button></center>
+                        <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return Validar(4)">Salvar</button></center>
 
                     </form>
                     <hr/>

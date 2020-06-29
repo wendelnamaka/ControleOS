@@ -14,7 +14,7 @@ function ExibirMsg($ret) {
             break;
 
         case 0;
-            echo ' <div class="alert alert-warning"> Preencher todos os campos obrigatorios </div>';
+            echo '<div class="alert alert-warning"> Preencha todos os campos obrigatorios </div>';
 
             break;
 
@@ -26,7 +26,7 @@ function ExibirMsg($ret) {
         
         case 2:
 
-            echo ' <div class="alert alert-info"> Não apareceu nenhum registro</div>';
+            echo '<center><div class="alert alert-info"> Não foi encontrado nenhum registro</div></center>';
 
             break;
         

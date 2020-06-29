@@ -12,7 +12,7 @@ class ModeloCtrl {
             return 0;
         }
 
-        $vo->setId_usuario(UtilCtrl::RetornarCodigoUserAdm());
+        $vo->setId_usuario(UtilCtrl::RetornarCodigoLogadoAdm());
         $dao = new ModeloDao();
 
         $ret = $dao->InserirModelo($vo);
@@ -27,7 +27,7 @@ class ModeloCtrl {
             return 0;
         }
 
-        $vo->setId_usuario(UtilCtrl::RetornarCodigoUserAdm());
+        $vo->setId_usuario(UtilCtrl::RetornarCodigoLogadoAdm());
 
         $dao = new ModeloDao();
 

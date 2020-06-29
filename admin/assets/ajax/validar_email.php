@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ControleOS/CONTROLLER/UsuarioFunciona
 
 
 
-if (isset($_POST['email_user']) && $_POST['acao'] === 'I'){
+if (isset($_POST['email_user']) && $_POST['acao'] == 'I'){
     
     $email = $_POST['email_user'];
     $ctrl =  new UsuarioFuncionarioCTRL();

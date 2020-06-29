@@ -67,7 +67,7 @@ $tipo = $ctrl->ConsultarTipo();
                             <label class="Validar" id="val_nome_tipo"></label>
                         </div>
 
-                        <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return Validar(2)">Salvar</button></center>
+                        <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return Validar(3)">Salvar</button></center>
                         <hr/>
                     </form>
 

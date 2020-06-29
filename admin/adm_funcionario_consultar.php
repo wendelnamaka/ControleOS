@@ -10,7 +10,7 @@ $ctrl_set = new SetorCTRL();
 
 
 if (isset($_POST['btnProcurar'])) {
-    $tipo = $_POST['tipo'];
+    $tipo = $_POST['tipo']; 
     $ctrl = new UsuarioFuncionarioCTRL();
 
     $usuarios = $ctrl->FiltrarUsuario($tipo);
@@ -29,25 +29,30 @@ if (isset($_POST['btnProcurar'])) {
 
     $uservo->setNome($_POST['nome_alt']);
     $uservo->setSobrenome($_POST['sobrenome']);
-    $uservo->setID($_POST['cod']);
- 
+    $codigo = $uservo->setID($_POST['cod']);
+
 
     $vofunc->setEmail_funcionario($_POST['email']);
     $vofunc->setEndereco_funcionario($_POST['endereco']);
     $vofunc->setTelefone_funcionario($_POST['telefone']);
-    $vofunc->setId_funcionario($_POST['cod']);
+    $vofunc->setId_usuario_funcionario($_POST['cod']);
     $vofunc->setId_setor($_POST['setor']);
 
+
+    
     $ctrl = new UsuarioFuncionarioCTRL();
 
-    $ret = $ctrl->AlterarFuncionario($uservo,$vofunc);
+    $ret = $ctrl->AlterarFuncionario($uservo, $vofunc);
+
     $usuarios = $ctrl->FiltrarUsuario($tipo);
 } else if (isset($_POST['btnAlterarAdm'])) {
 
     $tipo = $_POST['tipo_filtro'];
 
     $ctrl = new UsuarioFuncionarioCTRL();
+
     $uservo = new UsuarioVO();
+
     $uservo->setID($_POST['cod']);
     $uservo->setNome($_POST['nome_alt_adm']);
     $uservo->setSobrenome($_POST['nome_alt_sobre']);
@@ -127,7 +132,18 @@ $setor = $ctrl_set->ConsultarSetor();
                                                             <td><?= UtilCtrl::RetornaTipoUsuario($usuarios[$i]['tipo_usuario']) ?></td>
                                                             <td><?= $usuarios[$i]['nome_setor'] ?></td>
                                                             <td>
-                                                                <a href="#" class="btn btn-warning btn-xs" data-toggle="modal"  data-target="#<?= $usuarios[$i]['tipo_usuario'] == 1 ? 'modalAlterarAdm' : 'modAlterarFunc' ?>" onclick="return CarregarModal('<?= $usuarios[$i]['tipo_usuario'] ?>', '<?= $usuarios[$i]['id_usuario'] ?>', '<?= $usuarios[$i]['nome_usuario'] ?>', '<?= $usuarios[$i]['sobrenome'] ?>', '<?= $usuarios[$i]['id_setor'] ?>', '<?= $usuarios[$i]['email_funcionario'] ?>', '<?= $usuarios[$i]['telefone_funcionario'] ?>', '<?= $usuarios[$i]['endereco_funcionario'] ?>')">Alterar</a>
+                                                                <a href="#" class="btn btn-warning btn-xs" data-toggle="modal"  data-target="#<?= $usuarios[$i]['tipo_usuario'] == 1 ? 'modalAlterarAdm' : 'modAlterarFunc' ?>" 
+                                                                   onclick="return CarregarModal
+                                                                                               ('<?= $usuarios[$i]['tipo_usuario'] ?>',
+                                                                                                       '<?= $usuarios[$i]['id_usuario'] ?>',
+                                                                                                       '<?= $usuarios[$i]['nome_usuario'] ?>',
+                                                                                                       '<?= $usuarios[$i]['sobrenome'] ?>',
+                                                                                                       '<?= $usuarios[$i]['id_setor'] ?>',
+                                                                                                       '<?= $usuarios[$i]['email_funcionario'] ?>',
+                                                                                                       '<?= $usuarios[$i]['telefone_funcionario'] ?>',
+                                                                                                       '<?= $usuarios[$i]['endereco_funcionario'] ?>')">Alterar</a>
+
+
                                                             </td>
                                                             <?php
                                                         }
@@ -141,12 +157,8 @@ $setor = $ctrl_set->ConsultarSetor();
                                         }
                                     }
                                     ?>    
-                                           $c="5 navios " + "15 submarinos"
 
-                                            echo $c;
-                                           
-                                           
-                                           
+
                                     <div class="modal fade" id="modAlterarFunc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -270,6 +282,7 @@ $setor = $ctrl_set->ConsultarSetor();
 
 
                 } else {
+
 
                     $("#cod_func_alt").val(id);
                     $("#nome_alt").val(nome);

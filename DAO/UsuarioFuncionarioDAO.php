@@ -158,11 +158,9 @@ class UsuarioFuncionarioDAO extends Conexao {
         $sql->bindValue(1, $vo->getEmail_funcionario());
         $sql->bindValue(2, $vo->getTelefone_funcionario());
         $sql->bindValue(3, $vo->getEndereco_funcionario());
-        $sql->bindValue(4, $vo->getId_usuario_funcionario());       
-        $sql->bindValue(5, $vo->getId_Setor());
+        $sql->bindValue(4, $vo->getId_Setor());
+        $sql->bindValue(5, $vo->getId_usuario_funcionario());       
 
-
-        echo '<pre>', print_r($vo), '</pre>';
 
         $conexao->beginTransaction();
 
@@ -171,8 +169,9 @@ class UsuarioFuncionarioDAO extends Conexao {
             $sql->execute();
 
             $comando = Usuario_sql::AlterarAdm();
-            $sql = new PDOStatement;
+            
             $sql = $conexao->prepare($comando);
+            
             $sql->bindValue(1, $uservo->getNome());
             $sql->bindValue(2, $uservo->getSobrenome());
             $sql->bindValue(3, $uservo->getID());

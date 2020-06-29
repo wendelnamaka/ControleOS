@@ -149,6 +149,84 @@ function Validar(tela) {
 
 
             break;
+            
+    // adm_modelo_gerenciar
+        case 4:
+            
+            if ($("#nome").val().trim() == '') {
+                $("#val_nome").show().html("Preeencha o campo do nom do modelo");
+                $("#divModelo").addClass("has-error");
+                ret = false;
+            } else {
+                $("#val_nome").hide();
+                $("#divModelo").removeClass("has-error");
+            }
+            break;
+            
+            
+    // adm_equipamento_novo && adm_equipamento_consultar
+    
+        case 5:
+                // TIPO
+
+            if ($("#tipo").val().trim() == '') {
+                $("#val_tipo").show().html("Selecione o tipo de equipamento");
+                $("#divTipo").addClass("has-error");
+                ret = false;
+            } else {
+                $("#val_tipo").hide();
+                $("#divTipo").removeClass("has-error");
+            }
+            
+           // MODELO
+
+            if ($("#modelo").val().trim() == '') {
+                $("#val_modelo").show().html("Selecione o tipo de modelo");
+                $("#divModelo").addClass("has-error");
+                ret = false;
+            } else {
+                $("#val_modelo").hide();
+                $("#divModelo").removeClass("has-error");
+            }
+            
+           // IDENTIFICACAO
+            
+            if ($("#identificacao").val().trim() == '') {
+                $("#val_identificacao").show().html("Preeencha o campo identificacao");
+                $("#divIdentificacao").addClass("has-error");
+                ret = false;
+            } else {
+                $("#val_identificacao").hide();
+                $("#divIdentificacao").removeClass("has-error");
+            }
+           // DESCRICAO
+            
+            if ($("#descricao").val().trim() == '') {
+                $("#val_descricao").show().html("Preeencha o campo descricao");
+                $("#divDescricao").addClass("has-error");
+                ret = false;
+            } else {
+                $("#val_descricao").hide();
+                $("#divDescricao").removeClass("has-error");
+            }
+      
+            break;
+            
+          
+        case 6:
+                // NOME_MODELO
+            if ($("#nome_modelo").val().trim() == '') {
+                $("#val_nome_modelo").show().html("Selecione o modelo do equipamento");
+                $("#divModelo").addClass("has-error");
+                ret = false;
+            } else {
+                $("#val_nome_modelo").hide();
+                $("#divModelo").removeClass("has-error");
+            }  
+            
+            
+         break;   
+      
     }
 
     return ret;
