@@ -71,8 +71,52 @@ class Equipamento_sql {
 
     public static function AlterarEquipamento() {
 
-       $sql = 'update tb_equipamento set identificacao_equipamento=?, descricao_equipamento=?, id_tipo=?,id_modelo=? where id_usuario = ? and id_equipamento=?';
+        $sql = 'update tb_equipamento set identificacao_equipamento=?, descricao_equipamento=?, id_tipo=?,id_modelo=? where id_usuario = ? and id_equipamento=?';
 
+
+        return $sql;
+    }
+
+    public static function FiltrarEquipamentoDisponivel() {
+
+        $sql = 'select 
+                        eq.id_equipamento, 
+                        eq.identificacao_equipamento, 
+                        eq.descricao_equipamento
+                        
+                        from 
+                            tb_equipamento as eq
+                            where 
+                            
+                            eq.id_usuario = ?
+                            
+                            and 
+                            
+                            eq.id_equipamento not in (
+                                        
+                                            select 
+                                                    al.id_equipamento
+                                                    
+                                                from
+                                                    tb_alocar_setor as al 
+                                                 
+                                                    where 
+                                                    
+                                                    al.data_remover is null
+                                                    
+                                                    and 
+                                                    
+                                            al.id_usuario =  ?
+                                    )
+               ';
+
+
+        return $sql;
+    }
+    
+    public static function AlocarEquipamento() {
+
+        $sql = 'insert into tb_alocar_setor(data_alocar,id_setor,id_equipamento,id_usuario) values (?,?,?,?)';
 
         return $sql;
     }

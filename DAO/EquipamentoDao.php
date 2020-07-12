@@ -85,4 +85,32 @@ class EquipamentoDao extends Conexao {
         }
     }
 
+    public function FiltrarEquipamentoDisponivel($idUser) {
+
+        $conexao = parent::retornaConexao();
+        $comando = Equipamento_sql::FiltrarEquipamentoDisponivel();
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+        $sql->bindValue(1,$idUser);
+        $sql->bindValue(2,$idUser);
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+    
+    public function AlocarEquipamento(AlocarVO $vo) {
+
+        $conexao = parent::retornaConexao();
+        $comando = Equipamento_sql::AlocarEquipamento();
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+        $sql->bindValue(1,$vo->getData_alocar());
+        $sql->bindValue(2,$vo->getId_setor());
+        $sql->bindValue(3,$vo->getId_Equipamento());
+        $sql->bindValue(4,$vo->getId_usuario());
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+
 }

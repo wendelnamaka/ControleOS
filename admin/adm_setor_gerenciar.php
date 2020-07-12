@@ -72,7 +72,6 @@ $setores = $ctrl->ConsultarSetor();
                         </div>
 
                         <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return Validar(1)">Salvar</button></center>
-
                     </form>
                     <hr/>
                     <div class="col-md-12">

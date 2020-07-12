@@ -19,8 +19,7 @@ class EquipamentoCtrl {
 
         return $ret;
     }
- 
-    
+
     public function AlterarEquipamento(EquipamentoVO $vo) {
 
         if ($vo->getIdentificacao_equipamento() == '' || $vo->getDescricao_equipamento() == '' || $vo->getId_modelo() == '' || $vo->getId_tipo() == '') {
@@ -34,7 +33,6 @@ class EquipamentoCtrl {
 
         return $ret;
     }
- 
 
     public function FiltrarEquipamento($idMod) {
 
@@ -46,6 +44,17 @@ class EquipamentoCtrl {
 
         $dao = new EquipamentoDao();
         return $dao->DetalharEquipamento($idEquipamento, UtilCtrl::RetornarCodigoLogadoAdm());
+    }
+
+    public function FiltrarEquipamentoDisponivel() {
+
+        $dao = new EquipamentoDao();
+        return $dao->FiltrarEquipamentoDisponivel(UtilCtrl::RetornarCodigoLogadoAdm());
+    }
+    public function AlocarEquipamento() {
+
+        $dao = new EquipamentoDao();
+        return $dao->AlocarEquipamento(UtilCtrl::DataAtual());
     }
 
 }
