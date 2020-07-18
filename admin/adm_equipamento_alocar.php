@@ -10,16 +10,16 @@ $ctrl_set = new SetorCTRL();
 
 if (isset($_POST['btnAlocar'])) {
 
-
-    $equipamento = $_POST['equipamento'];
-    $setor = $_POST['setor'];
-
     $vo = new AlocarVO();
 
-    $vo->setId_Equipamento($equipamento);
-    $vo->setId_setor($setor);
+    $vo->setId_setor($_POST['setor']);
+    $vo->setId_Equipamento($_POST['equipamento']);
 
-    $ret = $ctrl_equ->AlocarEquipamento($vo);
+    echo "<pre>";
+    print_r($vo);
+    echo "</pre>";
+
+    $ret = $ctrl_equ->AlocarSetorEquipamento($vo);
 }
 
 $equipamentos = $ctrl_equ->FiltrarEquipamentoDisponivel();

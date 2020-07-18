@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
-            <url>DAO/SetorDao.php</url>
-            <bookmark id="1">
-                <name/>
-                <line>10</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>DAO/ModeloDao.php</url>
             <bookmark id="2">
                 <name/>
@@ -17,8 +9,21 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>DAO/SetorDao.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>10</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/ControleOS/admin/assets/ajax/gerenciar_setor_ajax.php</file>
+            <file>file:/C:/xampp/htdocs/ControleOS/admin/assets/ajax/validar_email.php</file>
+            <file>file:/C:/xampp/htdocs/ControleOS/admin/adm_setor_gerenciar.php</file>
+            <file>file:/C:/xampp/htdocs/ControleOS/admin/assets/js/gerenciar_setor_js.js</file>
+        </group>
     </open-files>
 </project-private>

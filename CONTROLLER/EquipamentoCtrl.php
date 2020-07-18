@@ -51,10 +51,13 @@ class EquipamentoCtrl {
         $dao = new EquipamentoDao();
         return $dao->FiltrarEquipamentoDisponivel(UtilCtrl::RetornarCodigoLogadoAdm());
     }
-    public function AlocarEquipamento() {
 
+    public function AlocarSetorEquipamento(AlocarVO $vo) {
+
+        $vo->setData_alocar(UtilCtrl::DataAtual());
+        $vo->setId_usuario(UtilCtrl::RetornarCodigoLogadoAdm());
         $dao = new EquipamentoDao();
-        return $dao->AlocarEquipamento(UtilCtrl::DataAtual());
+        return $dao->AlocarSetorEquipamento($vo);
     }
 
 }

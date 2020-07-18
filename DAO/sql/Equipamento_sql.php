@@ -114,7 +114,7 @@ class Equipamento_sql {
         return $sql;
     }
     
-    public static function AlocarEquipamento() {
+    public static function AlocarSetorEquipamento() {
 
         $sql = 'insert into tb_alocar_setor(data_alocar,id_setor,id_equipamento,id_usuario) values (?,?,?,?)';
 

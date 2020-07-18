@@ -33,13 +33,13 @@ class UtilCtrl {
         return $nome;
     }
 
-    public static function SetarFusoHoario(){
+    private static function SetarFusoHoario(){
         
         return date_default_timezone_set('America/Sao_Paulo');
         
     }
     public static function DataAtual(){
-        self::SetarVusoHoario();
+        self::SetarFusoHoario();
         return date('Y-m-d');
         
     }
