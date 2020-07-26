@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group" id="divTipo">
     <label>Tipo</label>
     <select class="form-control" id="tipo" name="tipo" onchange="ExibirTipo(this.value)">
         <option value="">Selecione</option>
@@ -9,3 +9,4 @@
     
     <label id="val_tipo" class="Validar"></label>
 </div>
+

@@ -1,11 +1,26 @@
-﻿<!DOCTYPE html>
+<?php
+require_once '../CONTROLLER/UsuarioFuncionarioCTRL.php';
+
+echo password_hash('123',PASSWORD_DEFAULT);
+
+if (isset($_POST['btnAcessar'])) {
+
+    $login = $_POST['login'];
+    $senha = $_POST['senha'];
+
+    $ctrl = new UsuarioFuncionarioCTRL();
+
+    $ret = $ctrl->ValidarLogin($login, $senha);
+}
+?>﻿
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-    <?php
-    include_once '_head.php';
-    ?>
+        <?php
+        include_once '_head.php';
+        ?>
     </head>
-    
+
     <body>
         <div class="container">
             <div class="row text-center ">
@@ -25,7 +40,14 @@
                             <strong>Encontre com seus dados </strong>  
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <?php
+                            if (isset($ret)) {
+
+                                ExibirMsg($ret);
+                            }
+                            ?>   
+                            <form action="login.php" method="post">
+
                                 <br />
                                 <div class="form-group input-group">
                                     <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
@@ -35,10 +57,10 @@
                                     <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
                                     <input type="password" class="form-control"  placeholder="Sua senha" name="senha" id="senha"  />
                                 </div>
-                    
+
                                 <center><button class="btn btn-primary " name="btnAcessar">Acessar</button></center>
                                 <hr />
-                            
+
                             </form>
                         </div>
 

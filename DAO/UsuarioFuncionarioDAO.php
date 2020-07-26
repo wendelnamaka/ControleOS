@@ -105,11 +105,11 @@ class UsuarioFuncionarioDAO extends Conexao {
         $sql->execute();
 
         $ret = $sql->fetchAll();
-        
+
         return $ret[0]['contar'];
-        
     }
-    public function ConsultarEmailDuplicadoAlterar($email ,$id) {
+
+    public function ConsultarEmailDuplicadoAlterar($email, $id) {
 
         $conexao = parent::retornaConexao();
         $comando = Usuario_sql::ConsultarEmailDuplicadoAlterar();
@@ -124,9 +124,8 @@ class UsuarioFuncionarioDAO extends Conexao {
         $sql->execute();
 
         $ret = $sql->fetchAll();
-        
+
         return $ret[0]['contar'];
-        
     }
 
     public function AlterarAdminitrador(UsuarioVO $vo) {
@@ -149,7 +148,7 @@ class UsuarioFuncionarioDAO extends Conexao {
         }
     }
 
-    public function AlterarFuncionario(UsuarioVO $uservo,FuncionarioVO $vo) {
+    public function AlterarFuncionario(UsuarioVO $uservo, FuncionarioVO $vo) {
 
         $conexao = parent::retornaConexao();
         $comando = Usuario_sql::AlterarFuncionario();
@@ -159,7 +158,7 @@ class UsuarioFuncionarioDAO extends Conexao {
         $sql->bindValue(2, $vo->getTelefone_funcionario());
         $sql->bindValue(3, $vo->getEndereco_funcionario());
         $sql->bindValue(4, $vo->getId_Setor());
-        $sql->bindValue(5, $vo->getId_usuario_funcionario());       
+        $sql->bindValue(5, $vo->getId_usuario_funcionario());
 
 
         $conexao->beginTransaction();
@@ -169,9 +168,9 @@ class UsuarioFuncionarioDAO extends Conexao {
             $sql->execute();
 
             $comando = Usuario_sql::AlterarAdm();
-            
+
             $sql = $conexao->prepare($comando);
-            
+
             $sql->bindValue(1, $uservo->getNome());
             $sql->bindValue(2, $uservo->getSobrenome());
             $sql->bindValue(3, $uservo->getID());
@@ -186,6 +185,23 @@ class UsuarioFuncionarioDAO extends Conexao {
 
             return - 1;
         }
+    }
+
+    public function ValidarLogin($login) {
+
+        $conexao = parent::retornaConexao();
+        $comando = Usuario_sql::ValidarLogin();
+
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+
+        $sql->bindValue(1, $login);
+
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+
+        $sql->execute();
+
+        return $sql->fetchAll();
     }
 
 }

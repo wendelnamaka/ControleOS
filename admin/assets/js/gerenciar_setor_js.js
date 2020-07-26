@@ -1,34 +1,30 @@
 
 function InserirSetor() {
 
-    $.post("assets/ajax/gerenciar_setor_ajax.php",
-            {
-                nome: $("#nome").val().trim(),
+$.post("assets/ajax/gerenciar_setor_ajax.php",
+        {
+        nome: $("#nome").val().trim(),
                 acao: 'I'
 
-            }, function (ret) {
+                }, function (ret) {
 
         $("#msg").html(ret);
-        $("nome").val('');
-    });
-
-
-
-    $.post("assets/ajax/gerenciar_setor_ajax.php",
-            {
+        $("nome_setor").val('');
+        
+                
+        $.post("assets/ajax/gerenciar_setor_ajax.php",
+                {
                 acao: 'C'
+                }, function (ret) {
 
-            }, function (ret) {
-             
-             alert(ret);
+        $("#tabSetores").html(ret);
+        };
 
-    });
-
-
-
-
+        });
 
 
 }
+
+
 
 

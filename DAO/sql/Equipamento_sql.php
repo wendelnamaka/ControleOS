@@ -46,6 +46,36 @@ class Equipamento_sql {
         return $sql;
     }
 
+    public static function FiltrarEquipamentoSetor() {
+
+        $sql = ' select 
+                        seq.id_alocar,
+                        eq.id_equipamento,
+                        eq.identificacao_equipamento,
+                        eq.descricao_equipamento
+                        
+                        from 
+                        
+                            tb_equipamento as eq
+                            
+                        inner join 
+                        
+                            tb_alocar_setor as seq
+                            
+                            on 
+                            
+                            eq.id_equipamento = seq.id_equipamento
+                            
+                        where 
+                        
+                             seq.id_setor = ?
+                                
+                             and 
+                             
+                             seq.data_remover is null';
+        return $sql;
+    }
+
     public static function DetalharEquipamento() {
 
         $sql = 'select 
@@ -113,10 +143,17 @@ class Equipamento_sql {
 
         return $sql;
     }
-    
+
     public static function AlocarSetorEquipamento() {
 
         $sql = 'insert into tb_alocar_setor(data_alocar,id_setor,id_equipamento,id_usuario) values (?,?,?,?)';
+
+        return $sql;
+    }
+
+    public static function RemoverEquipamentoSetor() {
+
+        $sql = 'update tb_alocar_setor set data_remover = ? where id_alocar =  ?';
 
         return $sql;
     }

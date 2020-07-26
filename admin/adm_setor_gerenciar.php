@@ -7,11 +7,12 @@ $ctrl = new SetorCTRL();
 
 if (isset($_POST['btnSalvar'])) {
 
-    $nome_setor = $_POST['nome_setor'];
+    $nome_setor = $_POST['nome'];
     $vo = new SetorVO();
 
     $vo->setNome_setor($nome_setor);
     $ret = $ctrl->InserirSetor($vo);
+    
 } else if (isset($_POST['btnAlterar'])) {
 
     $vo = new SetorVO();
@@ -28,10 +29,10 @@ if (isset($_POST['btnSalvar'])) {
 }
 
 $setores = $ctrl->ConsultarSetor();
-/// echo '<pre>',print_r($setores),'</pre>';
+//echo '<pre>',print_r($setores),'</pre>';
 //echo  '<prev>';
-//  print_r($setores);
-// echo  '</prev>';
+  //print_r($setores);
+//echo  '</prev>';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,6 +40,7 @@ $setores = $ctrl->ConsultarSetor();
         <?php
         include_once '_head.php';
         ?>
+        <script src="assets/js/gerenciar_setor_js.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -50,12 +52,14 @@ $setores = $ctrl->ConsultarSetor();
                 <div id="page-inner">
                     <div class="row">
                         <div class="col-md-12">
+                            <div id="msg">
                             <?php
                             if (isset($ret)) {
 
                                 ExibirMsg($ret);
                             }
-                            ?>    
+                            ?>
+                            </div>
                             <h2>Novo Setor</h2>   
                             <h5>Cadastre um novo setor nesta página.</h5>
 
@@ -65,14 +69,17 @@ $setores = $ctrl->ConsultarSetor();
                     <hr />
 
                     <form method="post" action="adm_setor_gerenciar.php">
-                        <div class="form-group" id="divNome">
+
+                        <div class="form-group" id="divNomeSetor">
                             <label>Nome do setor</label>
-                            <input class="form-control" placeholder="Digite o nome do novo setor" name="nome_setor" id="nome_setor"/>
-                            <label class="Validar"id="val_nome"</label>
+                            <input class="form-control" placeholder="Digite o nome do novo setor" name="nome" id="nome"/>
+                            <label class="Validar"id="val_nome_setor"</label>
                         </div>
 
-                        <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return Validar(1)">Salvar</button></center>
+                        <center><button type="submit" class="btn btn-success" name="btnSalvar" onclick="return InserirSetorAjax()">Salvar</button></center>
+
                     </form>
+
                     <hr/>
                     <div class="col-md-12">
                         <!-- Advanced Tables -->
@@ -148,6 +155,17 @@ $setores = $ctrl->ConsultarSetor();
         </form>
 
         <script>
+
+            function InserirSetorAjax() {
+
+            if (Validar(7) == true){
+
+            InserirSetor();
+                
+            }
+
+            return false;
+            }
 
             function AlterarDados(nome, id) {
 

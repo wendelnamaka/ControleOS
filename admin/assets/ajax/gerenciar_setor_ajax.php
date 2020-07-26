@@ -1,26 +1,27 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ControleOS/CONTROLLER/VO/SetorVO.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ControleOS/CONTROLLER/VO/SetorCTRL.php';
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ControleOS/VO/SetorVO.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ControleOS/CONTROLLER/SetorCtrl.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ControleOS/admin/_msg.php';
 
 
 
 if (isset($_POST['nome']) && $_POST['acao'] == 'I') {
 
-    $crtl = new SetorCTRL();
-    $nome = $POST['nome'];
+    $ctrl = new SetorCTRL();
+    $nome_setor = $POST['nome'];
     $vo = new SetorVO();
 
-    $vo->setNomeSetor($nome);
-    $ret->$crtl->InserirSetor($vo);
+    $vo->setNome_setor($nome_setor);
+    $ret = $ctrl->InserirSetor($vo);
+    
+    echo $ret;
+}
+else if ($_POST['acao'] === 'C') {
 
-    ExibirMsg($ret);
-} else if ($POST['acao'] == 'C') {
-
-    $crtl = new SetorCTRL();
+    $ctrl = new SetorCTRL();
     $setores = $crtl->ConsultarSetor();
     ?>
-
     <table class="table table-striped table-bordered table-hover" id="tabSetores">
         <thead>
             <tr>
@@ -44,4 +45,6 @@ if (isset($_POST['nome']) && $_POST['acao'] == 'I') {
     </table>
 
     <?php
-}?>
+    }
+?>
+

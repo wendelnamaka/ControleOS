@@ -58,22 +58,24 @@ class Usuario_sql {
 
     public function ConsultarEmailDuplicadoCadastro() {
 
-    $sql = 'select count(*) as contar
+        $sql = 'select count(*) as contar
                 from
                 tb_funcionario
        where email_funcionario = ?';
 
         return $sql;
     }
+
     public function ConsultarEmailDuplicadoAlterar() {
 
-    $sql = 'select count(*) as contar
+        $sql = 'select count(*) as contar
                 from
                 tb_funcionario
        where email_funcionario = ? and id_usuario_funcionario <> ?';
 
         return $sql;
     }
+
 // diferente dele mesmo <> 
     public static function AlterarAdm() {
 
@@ -99,6 +101,23 @@ class Usuario_sql {
 
                  id_usuario_funcionario = ?';
 
+
+        return $sql;
+    }
+
+    public function ValidarLogin() {
+
+        $sql = 'select senha_usuario,
+                id_usuario,
+                tipo_usuario
+                
+                from
+                
+                tb_usuario
+                
+                where 
+                
+                login_usuario = ?';
 
         return $sql;
     }

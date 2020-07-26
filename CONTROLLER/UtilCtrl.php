@@ -2,9 +2,45 @@
 
 class UtilCtrl {
 
-    public static function RetornarCodigoLogadoAdm() {
+    private static function IniciarSessao() {
 
-        return 1; // Simula o numero do id usuario adm logado
+        if (!isset($_SESSION)) {
+
+            session_start();
+        }
+    }
+
+    public static function CriarSessao($id, $tipo) {
+
+        self::IniciarSessao();
+        $_SESSION['tipo'] = $tipo;
+        $_SESSION['idUser'] = $id;
+    }
+
+    public static function Deslogar() {
+
+        self::IniciarSessao();
+        unset($_SESSION['tipo']);
+        unset($_SESSION['idUser']);
+
+        header('location : login.php');
+    }
+    public static function VerificarLogado(){
+        self::IniciarSessao();
+        
+        if(!(isset($_SESSION['idUser'])) && !(isset($_SESSION['tipo']))){
+            header('location: login.php');
+            
+        }
+    }
+
+    public static function RetornarCodigoLogadoAdm() {
+        self::IniciarSessao();
+        return $_SESSION['idUser'];
+    }
+    public static function RetornarTipoLogado() {
+        self::IniciarSessao();
+        return $_SESSION['tipo'];
     }
 
     public static function RetornaTipoUsuario($tipo) {
@@ -14,7 +50,7 @@ class UtilCtrl {
         switch ($tipo) {
 
             case 1:
-                $nome = 'Admnistrador';
+                $nome = 'Administrador';
 
                 break;
 
@@ -33,16 +69,14 @@ class UtilCtrl {
         return $nome;
     }
 
-    private static function SetarFusoHoario(){
-        
+    private static function SetarFusoHoario() {
+
         return date_default_timezone_set('America/Sao_Paulo');
-        
     }
-    public static function DataAtual(){
+
+    public static function DataAtual() {
         self::SetarFusoHoario();
         return date('Y-m-d');
-        
     }
-    
-    
+
 }

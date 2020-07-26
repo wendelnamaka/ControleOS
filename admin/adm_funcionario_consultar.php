@@ -10,7 +10,7 @@ $ctrl_set = new SetorCTRL();
 
 
 if (isset($_POST['btnProcurar'])) {
-    $tipo = $_POST['tipo']; 
+    $tipo = $_POST['tipo'];
     $ctrl = new UsuarioFuncionarioCTRL();
 
     $usuarios = $ctrl->FiltrarUsuario($tipo);
@@ -39,7 +39,7 @@ if (isset($_POST['btnProcurar'])) {
     $vofunc->setId_setor($_POST['setor']);
 
 
-    
+
     $ctrl = new UsuarioFuncionarioCTRL();
 
     $ret = $ctrl->AlterarFuncionario($uservo, $vofunc);
@@ -92,12 +92,12 @@ $setor = $ctrl_set->ConsultarSetor();
 
                     <hr />
 
-                    <form method="post" action="adm_funcionario_consultar.php">
+                    <form method="POST" action="adm_funcionario_consultar.php">
                         <?php
                         include_once '_combo_fixa_tipo.php';
                         ?>
 
-                        <center><button type="submit" class="btn btn-info" name="btnProcurar">Procurar</button></center>
+                        <center><button type="submit" class="btn btn-info" onclick="return Validar(8);" name="btnProcurar">Procurar</button></center>
                     </form>
                     <hr/>
 

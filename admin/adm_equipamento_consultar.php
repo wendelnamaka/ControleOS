@@ -13,7 +13,6 @@ if (isset($_POST['btnProcurar'])) {
     $equipes = $ctrl_equ->FiltrarEquipamento($mod);
 }
 
-
 $modelos = $ctrl_mod->ConsultarModelo();
 ?>
 <!DOCTYPE html>
@@ -57,7 +56,7 @@ $modelos = $ctrl_mod->ConsultarModelo();
 
                                     <option value="<?= $modelos[$i]['id_modelo'] ?>" <?= $mod == $modelos[$i]['id_modelo'] ? 'selected' : '' ?> >
 
-                                        <?= $modelos[$i]['nome'] ?>
+                                        <?= $modelos[$i]['nome']?>
 
                                     </option>
 
@@ -66,7 +65,7 @@ $modelos = $ctrl_mod->ConsultarModelo();
                             <label id="val_modelo" class="Validar"></label>
                         </div>         
 
-                        <center><button type="submit" onclick="return Validar(5)" class="btn btn-info" name="btnProcurar">Procurar</button></center>
+                        <center><button type="submit" onclick="return Validar(9)" class="btn btn-info" name="btnProcurar">Procurar</button></center>
                     </form>
                     <hr/>
 

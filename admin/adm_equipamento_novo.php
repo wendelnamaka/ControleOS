@@ -22,9 +22,9 @@ if (isset($_POST['btnSalvar'])) {
     $vo->setId_tipo($tipo);
     $vo->setIdentificacao_equipamento($identificacao_equipamento);
     $vo->setDescricao_equipamento($descricao_equipamento);
-echo "<pre>";
-print_r($vo);
-echo "</pre>";
+//echo "<pre>";
+//print_r($vo);
+//echo "</pre>";
     $ret = $ctrl->InserirEquipamento($vo);
 }
 $modelos = $ctrl_mod->ConsultarModelo();

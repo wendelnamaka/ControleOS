@@ -72,7 +72,7 @@ class UsuarioFuncionarioCTRL {
         return $dao->AlterarAdminitrador($vo);
     }
 
-    public function AlterarFuncionario(UsuarioVO $uservo ,FuncionarioVO $vo ) {
+    public function AlterarFuncionario(UsuarioVO $uservo, FuncionarioVO $vo) {
 
         if ($uservo->getNome() == '' || $uservo->getSobrenome() == '') {
             return 0;
@@ -82,25 +82,67 @@ class UsuarioFuncionarioCTRL {
 
             return 0;
         }
-        
-        $dao = new UsuarioFuncionarioDAO();
-   
-        return $dao->AlterarFuncionario($uservo,$vo);
 
+        $dao = new UsuarioFuncionarioDAO();
+
+        return $dao->AlterarFuncionario($uservo, $vo);
     }
-    
+
     public function ConsultarEmailDuplicadoCadastro($email) {
 
         $dao = new UsuarioFuncionarioDAO();
-        
+
         return $dao->ConsultarEmailDuplicadoCadastro($email);
     }
-    
-    public function ConsultarEmailDuplicadoAlterar($email,$id) {
+
+    public function ConsultarEmailDuplicadoAlterar($email, $id) {
 
         $dao = new UsuarioFuncionarioDAO();
-        
-        return $dao->ConsultarEmailDuplicadoAlterar($email,$id);
+
+        return $dao->ConsultarEmailDuplicadoAlterar($email, $id);
+    }
+
+    public function ValidarLogin($login, $senha) {
+
+        if (trim($login) == '' || trim($senha) == '') {
+            return 0;
+        }
+        $dao = new UsuarioFuncionarioDAO();
+
+        $user = $dao->ValidarLogin($login);
+
+        if (count($user) > 0) {
+
+            if (password_verify($senha, $user[0]['senha_usuario'])) {
+                UtilCtrl::CriarSessao($user[0]['id_usuario'], $user[0]['tipo_usuario']);
+
+                switch ($user[0]['tipo_usuario']) {
+
+                    case 1:
+                        header('location: adm_equipamento_alocar.php');
+
+                        break;
+
+                    case 2:
+
+                        header('location: func_novo_chamado.php');
+
+                        break;
+
+                    case 3:
+
+                        header('location: tec_consultar_chamados.php');
+
+                        break;
+                    
+                }
+            } else {
+
+                return -4;
+            }
+        } else {
+            return -3;
+        }
     }
 
 }

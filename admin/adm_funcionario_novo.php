@@ -92,12 +92,11 @@ $setor = $crtl_setor->ConsultarSetor();
                                 <input class="form-control" placeholder="Digite o seu nome" id="nome" name="nome" />
                                 <label id="val_nome" class="Validar"></label>
                             </div>
-                            <div class="form-group" id="divNome">
+                            <div class="form-group" id="divNome_sobrenome">
                                 <label>Sobrenome</label>
                                 <input class="form-control" placeholder="Digite o seu sobrenome" id="sobrenome" name="sobrenome" />
-                                <label id="val_nome" class="Validar"></label>
+                                <label id="val_nome_sobrenome" class="Validar"></label>
                             </div>
-
                         </div>
 
                         <div id="divGeral" style="display: none">
@@ -134,7 +133,7 @@ $setor = $crtl_setor->ConsultarSetor();
                                 <label>Endereço</label>
                                 <input class="form-control" placeholder="Digite o endereço"  id="endereco" name="endereco"/>
                                 <label id="val_end" class="Validar"></label>
-                            </div>
+                            </div>  
 
                         </div>
                         <button class="btn btn-success" name="btnSalvar" onclick="return Validar(2)">Salvar</button>

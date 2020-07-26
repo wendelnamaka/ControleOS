@@ -40,6 +40,12 @@ class EquipamentoCtrl {
         return $dao->FiltrarEquipamento(UtilCtrl::RetornarCodigoLogadoAdm(), $idMod);
     }
 
+    public function FiltrarEquipamentoSetor($idSetor) {
+
+        $dao = new EquipamentoDao();
+        return $dao->FiltrarEquipamentoSetor($idSetor);
+    }
+
     public function DetalharEquipamento($idEquipamento) {
 
         $dao = new EquipamentoDao();
@@ -58,6 +64,15 @@ class EquipamentoCtrl {
         $vo->setId_usuario(UtilCtrl::RetornarCodigoLogadoAdm());
         $dao = new EquipamentoDao();
         return $dao->AlocarSetorEquipamento($vo);
+    }
+
+    public function RemoverEquipamento(AlocarVO $vo) {
+
+        $dao = new EquipamentoDao();
+
+        $vo->setData_remover(UtilCtrl::DataAtual());
+
+        return $dao->RemoverEquipamento($vo);
     }
 
 }
