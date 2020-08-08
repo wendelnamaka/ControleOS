@@ -10,11 +10,16 @@ class UtilCtrl {
         }
     }
 
-    public static function CriarSessao($id, $tipo) {
+    public static function CriarSessao($id, $tipo, $idSetor) {
 
         self::IniciarSessao();
         $_SESSION['tipo'] = $tipo;
         $_SESSION['idUser'] = $id;
+        if($idSetor != ''){
+            
+            $_SESSION['idsetor'] = $idSetor;
+        }
+
     }
 
     public static function Deslogar() {
@@ -23,21 +28,39 @@ class UtilCtrl {
         unset($_SESSION['tipo']);
         unset($_SESSION['idUser']);
 
-        header('location : login.php');
-    }
-    public static function VerificarLogado(){
-        self::IniciarSessao();
+        if(isset($_SESSION['idsetor'])){
+            unset($_SESSION['idsetor']);
+        }
         
-        if(!(isset($_SESSION['idUser'])) && !(isset($_SESSION['tipo']))){
-            header('location: login.php');
-            
+        header('location: login.php');
+    }
+
+    public static function VerTipoPermissao($tipo) {
+
+        if ($tipo != self::RetornarTipoLogado()) {
+
+            self::Deslogar();
         }
     }
 
+    public static function VerificarLogado() {
+        self::IniciarSessao();
+
+        if (!(isset($_SESSION['idUser'])) && !(isset($_SESSION['tipo']))) {
+            header('location: login.php');
+        }
+    }
+    
+    public static function RetornarIdSetor() {
+        self::IniciarSessao();
+        return $_SESSION['idsetor'];
+    }
+    
     public static function RetornarCodigoLogadoAdm() {
         self::IniciarSessao();
         return $_SESSION['idUser'];
     }
+
     public static function RetornarTipoLogado() {
         self::IniciarSessao();
         return $_SESSION['tipo'];

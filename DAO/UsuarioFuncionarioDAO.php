@@ -204,4 +204,56 @@ class UsuarioFuncionarioDAO extends Conexao {
         return $sql->fetchAll();
     }
 
+    public function CarregarDadosUsuario($idLogado) {
+
+        $conexao = parent::retornaConexao();
+        $comando = $sql = Usuario_sql::CarregarDadosUsuario();
+
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+
+        $sql->bindValue(1, $idLogado);
+
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+
+        $sql->execute();
+
+        return $sql->fetchAll();
+    }
+
+    public function AlterarUsuarioFuncionario(FuncionarioVO $vo) {
+
+        $conexao = parent::retornaConexao();
+        $comando = Usuario_sql::AlterarUsuarioNome();
+        $sql = new PDOStatement;
+        $sql = $conexao->prepare($comando);
+        $sql->bindValue(1, $vo->getNome());
+        $sql->bindValue(2, $vo->getId_usuario_adm());
+
+        $conexao->beginTransaction();
+
+        try {
+            //ATUALIZA O NOME NA tb_usuario
+            $sql->execute();
+            
+            $comando = Usuario_sql::AlterarUsuarioFuncionario();
+            $sql = $conexao->prepare($comando);
+            $sql->bindValue(1, $vo->getEmail_funcionario());
+            $sql->bindValue(2, $vo->getTelefone_funcionario());
+            $sql->bindValue(3, $vo->getEndereco_funcionario());
+            $sql->bindValue(4, $vo->getId_usuario_adm());
+            
+            
+            //ATUALIZA O NOME NA tb_funcionario
+            $sql->execute();
+            
+            $conexao->commit();
+            
+            return 1;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+            return - 1;
+        }
+    }
+
 }

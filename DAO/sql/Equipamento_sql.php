@@ -75,6 +75,45 @@ class Equipamento_sql {
                              seq.data_remover is null';
         return $sql;
     }
+    
+    public static function FiltrarEquipamentoSetorChamado() {
+
+        $sql = ' select 
+                        eq.id_equipamento,
+                        eq.identificacao_equipamento,
+                        eq.descricao_equipamento
+                        
+                        from 
+                        
+                            tb_equipamento as eq
+                            
+                        inner join 
+                        
+                            tb_alocar_setor as seq
+                            
+                            on 
+                            
+                            eq.id_equipamento = seq.id_equipamento
+                            
+                        where 
+                        
+                             seq.id_setor = ?
+                                
+                             and 
+                             
+                             seq.data_remover is null
+                             
+                             and 
+                             
+                             eq.id_equipamento not in (
+                                                           select ch.id_equipamento
+                                                            from tb_chamado as ch
+                                                            where situacao <> 3
+                                                
+                                                      )
+';
+        return $sql;
+    }
 
     public static function DetalharEquipamento() {
 

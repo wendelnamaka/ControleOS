@@ -105,19 +105,71 @@ class Usuario_sql {
         return $sql;
     }
 
+    public static function AlterarUsuarioNome() {
+
+        $sql = 'update tb_usuario 
+            
+                            set nome_usuario = ?
+                            where 
+                            
+                            id_usuario = ?
+                 ';
+
+        return $sql;
+    }
+
+    public static function AlterarUsuarioFuncionario() {
+
+        $sql = 'update tb_funcionario 
+                            set email_funcionario = ?,
+                            telefone_funcionario = ?,
+                            endereco_funcionario = ?
+                            where 
+
+                 id_usuario_funcionario = ?';
+
+
+        return $sql;
+    }
+
     public function ValidarLogin() {
 
         $sql = 'select senha_usuario,
-                id_usuario,
-                tipo_usuario
+                us.id_usuario,
+                us.tipo_usuario,
+                fu.id_setor
+           from tb_usuario as us                         
+      left join tb_funcionario as fu 
+             on us.id_usuario = fu.id_usuario_funcionario
+          where login_usuario = ?';
+
+        return $sql;
+    }
+
+    public function CarregarDadosUsuario() {
+
+        $sql = 'select nome_usuario,
+                email_funcionario,
+                telefone_funcionario,
+                endereco_funcionario
                 
                 from
                 
-                tb_usuario
+                tb_funcionario  as f 
                 
+                inner join
+                    
+                tb_usuario as u    
+                
+                on 
+                    
+                f.id_usuario_funcionario = u.id_usuario
+
                 where 
                 
-                login_usuario = ?';
+                f.id_usuario_funcionario = ?';
+
+
 
         return $sql;
     }

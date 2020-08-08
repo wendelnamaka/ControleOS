@@ -45,6 +45,11 @@ class EquipamentoCtrl {
         $dao = new EquipamentoDao();
         return $dao->FiltrarEquipamentoSetor($idSetor);
     }
+    public function FiltrarEquipamentoSetorChamado() {
+
+        $dao = new EquipamentoDao();
+        return $dao->FiltrarEquipamentoSetorChamado(UtilCtrl::RetornarIdSetor());
+    }
 
     public function DetalharEquipamento($idEquipamento) {
 

@@ -4,6 +4,8 @@ require_once '../VO/UsuarioVO.php';
 require_once '../VO/SetorVO.php';
 require_once '../CONTROLLER/UsuarioFuncionarioCTRL.php';
 require_once '../CONTROLLER/SetorCtrl.php';
+require_once '../CONTROLLER/UtilCtrl.php';
+UtilCtrl::VerTipoPermissao(1);
 
 
 $ctrl = new UsuarioFuncionarioCTRL();

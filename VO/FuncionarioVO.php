@@ -1,9 +1,11 @@
 <?php
 
+require_once '../VO/UsuarioVO.php';
+
    // echo "<pre>";
    // print_r($vofunc);
    // echo "</pre>";
-class FuncionarioVO {
+class FuncionarioVO extends UsuarioVO{
 
     private $id_funcionario;
     private $email_funcionario;

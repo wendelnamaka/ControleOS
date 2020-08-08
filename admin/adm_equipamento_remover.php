@@ -2,6 +2,9 @@
 require_once '../CONTROLLER/SetorCtrl.php';
 require_once '../CONTROLLER/EquipamentoCtrl.php';
 require_once '../VO/AlocarVO.php';
+require_once '../CONTROLLER/UtilCtrl.php';
+
+UtilCtrl::VerificarPermissao(1);
 
 $ctrl_set = new SetorCTRL();
 $setor = '';

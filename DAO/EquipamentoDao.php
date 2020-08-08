@@ -58,6 +58,20 @@ class EquipamentoDao extends Conexao {
         return $sql->fetchAll();
     }
 
+    public function FiltrarEquipamentoSetorChamado($idSetor) {
+
+        $conexao = parent::retornaConexao();
+        $comando = Equipamento_sql::FiltrarEquipamentoSetorChamado();
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+        $sql->bindValue(1, $idSetor);
+
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+        $sql->execute();
+
+        return $sql->fetchAll();
+    }
+
     public function DetalharEquipamento($idEquipamento, $idUser) {
 
         $conexao = parent::retornaConexao();

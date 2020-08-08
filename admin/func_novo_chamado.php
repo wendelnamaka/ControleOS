@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+<?php
+require_once '../CONTROLLER/EquipamentoCtrl.php';
+
+$ctrl_equip = new EquipamentoCtrl();
+$eqs = $ctrl_equip->FiltrarEquipamentoSetorChamado();
+?>﻿
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <?php
@@ -21,10 +27,19 @@
                     </div>
 
                     <hr />
-                <label>Equipamento</label>
-                    <?php
-                    include_once '_combo_fixa_situacao.php';
-                    ?>
+                    <label>Equipamento</label>
+                    <div class="form-group">
+
+                        <select class="form-control">
+                            <option value="">Selecione</option>
+                            <?php for ($i = 0; $i < count($eqs); $i++) { ?>
+                                <option value="<?= $eqs[$i]['id_equipamento'] ?>">
+                                    <?= $eqs[$i]['identificacao_equipamento'] ?> <?= $eqs[$i]['descricao_equipamento'] ?>
+                                </option>
+
+                            <?php } ?>     
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Descreva o seu problema</label>
                         <textArea class="form-control" placeholder="Digite o endereço" ></textarea>

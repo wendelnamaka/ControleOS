@@ -1,11 +1,16 @@
 <?php
 require_once '../CONTROLLER/EquipamentoCtrl.php';
 require_once '../CONTROLLER/SetorCtrl.php';
+require_once '../CONTROLLER/UtilCtrl.php';
 require_once '../VO/EquipamentoVO.php';
 require_once '../VO/AlocarVO.php';
 
+UtilCtrl::VerTipoPermissao(1);
+
 $ctrl_equ = new EquipamentoCtrl;
 $ctrl_set = new SetorCTRL();
+
+$idsetor = '';
 
 
 if (isset($_POST['btnAlocar'])) {

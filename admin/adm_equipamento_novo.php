@@ -3,7 +3,9 @@ require_once '../CONTROLLER/TipoCtrl.php';
 require_once '../CONTROLLER/EquipamentoCtrl.php';
 require_once '../CONTROLLER/ModeloCtrl.php';
 require_once '../VO/EquipamentoVO.php';
+require_once '../CONTROLLER/UtilCtrl.php';
 
+UtilCtrl::VerTipoPermissao(1);
 
 $ctrl = new EquipamentoCtrl();
 $ctrl_mod = new ModeloCtrl();

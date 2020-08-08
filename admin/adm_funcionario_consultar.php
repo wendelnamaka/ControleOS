@@ -1,9 +1,10 @@
 ﻿<?php
 require_once '../CONTROLLER/SetorCtrl.php';
 require_once '../CONTROLLER/UsuarioFuncionarioCTRL.php';
-require_once '../CONTROLLER/UtilCtrl.php';
 require_once '../VO/UsuarioVO.php';
 require_once '../VO/FuncionarioVO.php';
+require_once '../CONTROLLER/UtilCtrl.php';
+UtilCtrl::VerTipoPermissao(1);
 
 $tipo = '';
 $ctrl_set = new SetorCTRL();

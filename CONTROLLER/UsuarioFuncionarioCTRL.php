@@ -102,6 +102,12 @@ class UsuarioFuncionarioCTRL {
         return $dao->ConsultarEmailDuplicadoAlterar($email, $id);
     }
 
+    public function CarregarDadosUsuario() {
+        $dao = new UsuarioFuncionarioDAO();
+
+        return $dao->CarregarDadosUsuario(UtilCtrl::RetornarCodigoLogadoAdm());
+    }
+
     public function ValidarLogin($login, $senha) {
 
         if (trim($login) == '' || trim($senha) == '') {
@@ -114,7 +120,8 @@ class UsuarioFuncionarioCTRL {
         if (count($user) > 0) {
 
             if (password_verify($senha, $user[0]['senha_usuario'])) {
-                UtilCtrl::CriarSessao($user[0]['id_usuario'], $user[0]['tipo_usuario']);
+                
+                UtilCtrl::CriarSessao($user[0]['id_usuario'], $user[0]['tipo_usuario'],$user[0]['id_setor'] == ''? '' : $user[0]['id_setor']);
 
                 switch ($user[0]['tipo_usuario']) {
 
@@ -134,7 +141,6 @@ class UsuarioFuncionarioCTRL {
                         header('location: tec_consultar_chamados.php');
 
                         break;
-                    
                 }
             } else {
 
@@ -143,6 +149,15 @@ class UsuarioFuncionarioCTRL {
         } else {
             return -3;
         }
+    }
+
+    public function AlterarUsuarioFuncionario(FuncionarioVO $vo) {
+
+        $vo->setId_usuario_adm(UtilCtrl::RetornarCodigoLogadoAdm());
+        $dao = new UsuarioFuncionarioDAO();
+        
+        return $dao->AlterarUsuarioFuncionario($vo);
+
     }
 
 }

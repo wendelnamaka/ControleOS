@@ -2,6 +2,8 @@
 require_once '../VO/TipoVo.php';
 require_once '../CONTROLLER/TipoCtrl.php';
 require_once './_msg.php';
+UtilCtrl::VerTipoPermissao(1);
+
 
 $ctrl = new TipoCTRL();
 
@@ -27,8 +29,6 @@ if (isset($_POST['btnSalvar'])) {
 
 $tipo = $ctrl->ConsultarTipo();
 ?>
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>

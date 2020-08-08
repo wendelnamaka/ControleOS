@@ -1,9 +1,12 @@
 <?php
 require_once '../VO/ModeloVO.php';
 require_once '../CONTROLLER/ModeloCtrl.php';
+require_once '../CONTROLLER/UtilCtrl.php';
+
 require_once './_msg.php';
 
 $ctrl = new ModeloCtrl();
+UtilCtrl::VerTipoPermissao(1);
 
 if (isset($_POST['btnSalvar'])) {
 

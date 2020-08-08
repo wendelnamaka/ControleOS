@@ -3,10 +3,15 @@ require_once '../CONTROLLER/EquipamentoCtrl.php';
 require_once '../CONTROLLER/TipoCtrl.php';
 require_once '../CONTROLLER/ModeloCtrl.php';
 require_once '../VO/EquipamentoVO.php';
+require_once '../CONTROLLER/UtilCtrl.php';
+UtilCtrl::VerTipoPermissao(1);
+
 
 $ctrl_tipo = new TipoCTRL();
 $ctrl_modelo = new ModeloCtrl();
 $ctrl_equipamento = new EquipamentoCtrl();
+
+$tipos= '';
 
 if (isset($_GET['cod']) && is_numeric($_GET['cod'])) {
 

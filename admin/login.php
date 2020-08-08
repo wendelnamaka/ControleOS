@@ -1,7 +1,7 @@
 <?php
 require_once '../CONTROLLER/UsuarioFuncionarioCTRL.php';
 
-echo password_hash('123',PASSWORD_DEFAULT);
+//echo password_hash('123',PASSWORD_DEFAULT);
 
 if (isset($_POST['btnAcessar'])) {
 
