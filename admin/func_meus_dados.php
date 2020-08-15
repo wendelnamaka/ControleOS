@@ -3,7 +3,7 @@ require_once '../CONTROLLER/UsuarioFuncionarioCTRL.php';
 require_once '../CONTROLLER/UtilCtrl.php';
 require_once '../VO/FuncionarioVO.php';
 
-//UtilCtrl::VerTipoPermissao(2);
+UtilCtrl::VerTipoPermissao(2);
 $ctrl = new UsuarioFuncionarioCTRL();
 
 if (isset($_POST['btnSalvar'])) {

@@ -1,70 +1,28 @@
 <?php
 
 require_once '../DAO/ChamadaDao.php';
+require_once 'UtilCtrl.php';
 
 class ChamadaCtrl{
     
-    public function InserirChamada (ChamadaVO $vo){
+    public function AbrirChamado(ChamadaVO $vo){
         
-     if ($vo->getData_abertura() == ''){
-         
-         return 0;
-     }
-     if ($vo->getData_atendimento() == ''){
-         
-         return 0;
-     }
-     
-     if($vo->getDescricao_problema() == ''){
-         
-         return 0;
-     }
-     if($vo->getHora_abertura() == ''){
-         
-         return 0;
-     }
-     if($vo->getHora_atendimento() == ''){
-         
-         return 0;
-     }
-     if($vo->getId_chamado() == ''){
-         
-         return 0;
-     }
-     if($vo->getId_equipamento() == ''){
-         
-         return 0;
-         
-     }
-     if($vo->getId_funcionario_setor() == ''){
-         
-         return 0;
-     }
-     if($vo->getId_funcionario_tecnico() == ''){
-         
-         return 0;
-     }
-     if($vo->getLaudo_atendimento() == ''){
-         
-         return 0;
-     }
-     if($vo->getSituacao() == ''){
-         
-         return 0;
-         
-     }
+   if($vo->getDescricao_problema() == '' || $vo->getId_equipamento() == ''){
 
-        $vo->setId_usuario(UtilCtrl::RetornarCodigoUserAdm());
+        $vo->setId_funcionario_setor(UtilCtrl::RetornarIdFunc());
+        $vo->setData_abertura(UtilCtrl::DataAtual());
+        $vo->setHora_abertura(UtilCtrl::HoraAtual());
+        $vo->setSituacao(1);
         
         $dao = new ChamadaDao();
         
-        $ret = $dao->InserirChamada($vo);
+        $ret = $dao->AbrirChamado($vo);
         
         return $ret;
         
     }
     
     
-    
-    
+}
+
 }

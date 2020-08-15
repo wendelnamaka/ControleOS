@@ -10,7 +10,7 @@ class UtilCtrl {
         }
     }
 
-    public static function CriarSessao($id, $tipo, $idSetor) {
+    public static function CriarSessao($id, $tipo, $idSetor, $idFunc) {
 
         self::IniciarSessao();
         $_SESSION['tipo'] = $tipo;
@@ -18,6 +18,10 @@ class UtilCtrl {
         if($idSetor != ''){
             
             $_SESSION['idsetor'] = $idSetor;
+        }
+        if($idFunc != ''){
+            
+            $_SESSION['idfunc'] = $idFunc;
         }
 
     }
@@ -30,6 +34,10 @@ class UtilCtrl {
 
         if(isset($_SESSION['idsetor'])){
             unset($_SESSION['idsetor']);
+        }
+        
+        if(isset($_SESSION['idfunc'])){
+            unset($_SESSION['idfunc']);
         }
         
         header('location: login.php');
@@ -54,6 +62,10 @@ class UtilCtrl {
     public static function RetornarIdSetor() {
         self::IniciarSessao();
         return $_SESSION['idsetor'];
+    }
+    public static function RetornarIdFunc() {
+        self::IniciarSessao();
+        return $_SESSION['idfunc'];
     }
     
     public static function RetornarCodigoLogadoAdm() {
@@ -100,6 +112,11 @@ class UtilCtrl {
     public static function DataAtual() {
         self::SetarFusoHoario();
         return date('Y-m-d');
+    }
+    
+    public static function HoraAtual() {
+        self::SetarFusoHoario();
+        return date('H:i:s');
     }
 
 }

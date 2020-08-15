@@ -121,7 +121,7 @@ class UsuarioFuncionarioCTRL {
 
             if (password_verify($senha, $user[0]['senha_usuario'])) {
                 
-                UtilCtrl::CriarSessao($user[0]['id_usuario'], $user[0]['tipo_usuario'],$user[0]['id_setor'] == ''? '' : $user[0]['id_setor']);
+                UtilCtrl::CriarSessao($user[0]['id_usuario'], $user[0]['tipo_usuario'],$user[0]['id_setor'] == ''? '' : $user[0]['id_setor'],$user[0]['id_funcionario'] == ''? '' : $user[0]['id_funcionario']);
 
                 switch ($user[0]['tipo_usuario']) {
 

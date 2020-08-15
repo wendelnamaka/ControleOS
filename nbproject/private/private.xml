@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
-            <url>DAO/SetorDao.php</url>
-            <bookmark id="1">
-                <name/>
-                <line>10</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>DAO/ModeloDao.php</url>
             <bookmark id="2">
                 <name/>
@@ -17,16 +9,21 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>DAO/SetorDao.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>10</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ControleOS/DAO/sql/Tipo_sql.php</file>
-            <file>file:/C:/xampp/htdocs/ControleOS/admin/adm_modelo_gerenciar.php</file>
-            <file>file:/C:/xampp/htdocs/ControleOS/admin/adm_tipo_gerenciar.php</file>
-            <file>file:/C:/xampp/htdocs/ControleOS/CONTROLLER/TipoCtrl.php</file>
-            <file>file:/C:/xampp/htdocs/ControleOS/DAO/TipoDao.php</file>
-            <file>file:/C:/xampp/htdocs/ControleOS/admin/adm_funcionario_novo.php</file>
-            <file>file:/C:/xampp/htdocs/ControleOS/admin/adm_equipamento_consultar.php</file>
+            <file>file:/C:/xampp/htdocs/ControleOS/admin/adm_funcionario_consultar.php</file>
+            <file>file:/C:/xampp/htdocs/ControleOS/DAO/sql/Equipamento_sql.php</file>
+            <file>file:/C:/xampp/htdocs/ControleOS/admin/ui.html</file>
+            <file>file:/C:/xampp/htdocs/ControleOS/CONTROLLER/ModeloCtrl.php</file>
         </group>
     </open-files>
 </project-private>

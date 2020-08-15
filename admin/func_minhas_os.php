@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+<?php
+
+$situacao = '';
+
+
+if(isset($_POST['btnProcurar'])){
+    $situacao = $POST['situacao'];
+    
+    
+    
+}
+?>﻿
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <?php
@@ -21,14 +33,26 @@
 
                     <hr />
 
-                    <?php
-                    
-                    include_once '_combo_fixa_situacao.php';
-                    
-                    ?>
+                    <form method="post" action="func_minhas_os.php">
 
-                    <center><button type="info" class="btn btn-info">Procurar</button></center>
-                    <hr/>
+                        <div class="form-group" id="divModelo">2
+
+                            <select class="form-control" name="situacao">
+                                <option value="0"><?= $situacao == 0 ? 'selected' : '' ?></option>
+                                <option value="1"><?= $situacao == 1 ? 'selected' : '' ?></option>
+                                <option value="2"><?= $situacao == 2 ? 'selected' : '' ?></option>
+                                <option value="3"><?= $situacao == 3 ? 'selected' : '' ?></option>
+                                
+                            </select>
+
+                        </div>
+                        
+                        <label id="val_modelo" class="Validar"></label>
+
+                        <center><button type="info" class="btn btn-info"  name="btnProcurar">Procurar</button></center>
+                        <hr/>
+
+                    </form>
 
                     <div class="col-md-12">
                         <!-- Advanced Tables -->
@@ -41,11 +65,14 @@
                                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                         <thead>
                                             <tr>
-                                                <th>Equipamento Solicitado</th>
-                                                <th>Status Abertura</th>
+                                                <th>Abertura</th>
+                                                <th>Equipamento</th>
+                                                <th>Problema</th>
+                                                <th>Situacao Abertura</th>
                                                 <th>Técnico Atendimento </th>
-                                                <th>Encerramento</th>
+                                                <th>Atendimento</th>
                                                 <th>Laudo</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>

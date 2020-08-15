@@ -85,6 +85,9 @@ $tipo = UtilCtrl::RetornarTipoLogado();
                         <li>
                             <a href="func_novo_chamado.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Abrir Chamado</a>
                         </li>  
+                        <li>
+                            <a href="func_minhas_os.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Minhas OS</a>
+                        </li>  
 
 
             <?php } ?>
