@@ -2,7 +2,7 @@
 require_once '../VO/SetorVO.php';
 require_once '../CONTROLLER/SetorCtrl.php';
 require_once './_msg.php';
-UtilCtrl::VerTipoPermissao(1);
+//UtilCtrl::VerTipoPermissao(1);
 
 $ctrl = new SetorCTRL();
 

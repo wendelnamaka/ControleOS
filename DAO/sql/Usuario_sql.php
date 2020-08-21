@@ -139,6 +139,7 @@ class Usuario_sql {
                 us.tipo_usuario,
                 fu.id_setor,
                 fu.id_funcionario
+                
            from tb_usuario as us                         
       left join tb_funcionario as fu 
              on us.id_usuario = fu.id_usuario_funcionario

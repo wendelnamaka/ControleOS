@@ -76,6 +76,7 @@ class UtilCtrl {
     public static function RetornarTipoLogado() {
         self::IniciarSessao();
         return $_SESSION['tipo'];
+            
     }
 
     public static function RetornaTipoUsuario($tipo) {
@@ -103,6 +104,31 @@ class UtilCtrl {
 
         return $nome;
     }
+    public static function RetornaSituacao($sit) {
+
+        $nome = '';
+
+        switch ($sit) {
+
+            case 1:
+                $nome = '<i>Aguardando Atendimento</i>';
+
+                break;
+
+            case 2:
+                $nome = '<i>Em atendimento</i>';
+
+                break;
+
+            case 3:
+
+                $nome = '<i>Finalizado</i>';
+
+                break;
+        }
+
+        return $nome;
+    }
 
     private static function SetarFusoHoario() {
 
@@ -118,5 +144,18 @@ class UtilCtrl {
         self::SetarFusoHoario();
         return date('H:i:s');
     }
+    
+    public static function MostrarData($data){
+        
+        return explode('-', $data)[2] . '/' . explode('-', $data)[1]. '/' .explode('-', $data)[0];
+        
+    }
+    public static function MostrarHora($hora){
+        
+        return explode(':', $hora)[0] . ':' . explode(':', $hora)[1];
+        
+    }
+    
+    
 
 }

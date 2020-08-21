@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 require_once '../VO/TipoVo.php';
 require_once '../CONTROLLER/TipoCtrl.php';
 require_once './_msg.php';
-UtilCtrl::VerTipoPermissao(1);
-
 
 $ctrl = new TipoCTRL();
+//UtilCtrl::VerificarPermissao(2);
+
 
 if (isset($_POST['btnSalvar'])) {
 
@@ -28,6 +28,9 @@ if (isset($_POST['btnSalvar'])) {
 }
 
 $tipo = $ctrl->ConsultarTipo();
+echo "<pre>";
+print_r($tipo);
+echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -87,9 +90,9 @@ $tipo = $ctrl->ConsultarTipo();
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php for ($i = 0; $i < count($tipo); $i++) { ?>
-
-                                                <tr class="odd gradeX">
+                                            <?php for ($i = 0; $i < count($tipo); $i++) { 
+                                            ?>
+                                                <tr class="odd gradeX"> 
                                                     <td><?= $tipo[$i]['nome_tipo'] ?></td>
                                                     <td>
                                                         <a href="#" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modalAlterar" onclick="return AlterarDados('<?= $tipo[$i]['nome_tipo'] ?>', <?= $tipo[$i]['id_tipo'] ?>)">Alterar</a>

@@ -39,7 +39,7 @@ class TipoCTRL{
     public function ConsultarTipo() {
 
         $dao = new TipoDao();
-        $dados = $dao->ConsultarTipo(UtilCTRL::RetornarCodigoLogadoAdm());
+        $dados = $dao->ConsultarTipo(UtilCtrl::RetornarCodigoLogadoAdm());
 
         return $dados;
     }

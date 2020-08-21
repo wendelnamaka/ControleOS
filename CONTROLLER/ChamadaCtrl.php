@@ -8,6 +8,9 @@ class ChamadaCtrl{
     public function AbrirChamado(ChamadaVO $vo){
         
    if($vo->getDescricao_problema() == '' || $vo->getId_equipamento() == ''){
+       
+       return 0;
+   }
 
         $vo->setId_funcionario_setor(UtilCtrl::RetornarIdFunc());
         $vo->setData_abertura(UtilCtrl::DataAtual());
@@ -22,7 +25,15 @@ class ChamadaCtrl{
         
     }
     
+   public function FiltrarMeusChamados($sit) {
+       $dao = new ChamadaDao();
+       
+       return $dao->FiltrarMeusChamados(UtilCtrl::RetornarIdFunc(),$sit);
+             
+ 
+   }
+
+    
     
 }
 
-}

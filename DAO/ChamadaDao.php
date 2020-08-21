@@ -5,7 +5,7 @@ require_once 'sql/Chamado_sql.php';
 
 class ChamadaDao extends Conexao{
     
-    public function AbrirChamado(ChamadaVO $vo) {
+    public function AbrirChamado(ChamadaVO $vo) {        
         
         $conexao = parent::retornaConexao();
         $comando = Chamado_sql::AbrirChamado();
@@ -31,12 +31,23 @@ class ChamadaDao extends Conexao{
         }
                
     }
-        public function FiltrarMeusChamados(ChamadaVO $vo, $sit) {
+        public function FiltrarMeusChamados($idFunc, $sit) {
             $conexao = parent::retornaConexao();
             
             $comando = Chamado_sql::FiltrarMeusChamados($sit);
-            $sql = new PDOStatement();       
+            $sql = new PDOStatement();
+            $sql = $conexao->prepare($comando);
             
+            $sql->bindValue(1,$idFunc);
+            
+            if($sit != '0'){
+                $sql->bindValue(2, $sit);
+            }
+            $sql->setFetchMode(PDO::FETCH_ASSOC);
+            
+            $sql->execute();
+            
+            return $sql->fetchAll();
 
         }
      

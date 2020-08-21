@@ -11,12 +11,8 @@ if (isset($_POST['btnFinalizar'])) {
 
     $vo->setId_equipamento($_POST['equip']);
     $vo->setDescricao_problema($_POST['descricao']);
- 
-    $ret = $ctrl_ch->AbrirChamado($vo);
 
-   // echo "<pre>";
-  //  print_r($vo);
-  //  echo "</pre>";
+    $ret = $ctrl_ch->AbrirChamado($vo);
 }
 
 $eqs = $ctrl_equip->FiltrarEquipamentoSetorChamado();
@@ -71,7 +67,7 @@ $eqs = $ctrl_equip->FiltrarEquipamentoSetorChamado();
                             <label id="val_descricao" class="Validar"></label>
                         </div>
 
-                        <center><button class="btn btn-success" name="btnFinalizar" onclick="return Validar(5)">Salvar</button></center>
+                        <center><button class="btn btn-success" name="btnSalvar" onclick="return Validar(5)">Salvar</button></center>
 
                     </form>
                 </div>

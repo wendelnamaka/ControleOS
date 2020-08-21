@@ -1,13 +1,16 @@
 <?php
+require_once '../CONTROLLER/ChamadaCtrl.php';
+require_once '../CONTROLLER/UtilCtrl.php';
 
 $situacao = '';
 
 
-if(isset($_POST['btnProcurar'])){
-    $situacao = $POST['situacao'];
-    
-    
-    
+if (isset($_POST['btnPesquisar'])) {
+    $crtl = new ChamadaCtrl();
+
+    $situacao = $_POST['situacao'];
+
+    $chamados = $crtl->FiltrarMeusChamados($situacao);
 }
 ?>﻿
 <!DOCTYPE html>
@@ -35,69 +38,77 @@ if(isset($_POST['btnProcurar'])){
 
                     <form method="post" action="func_minhas_os.php">
 
-                        <div class="form-group" id="divModelo">2
+                        <div class="form-group" id="divModelo">
 
                             <select class="form-control" name="situacao">
-                                <option value="0"><?= $situacao == 0 ? 'selected' : '' ?></option>
-                                <option value="1"><?= $situacao == 1 ? 'selected' : '' ?></option>
-                                <option value="2"><?= $situacao == 2 ? 'selected' : '' ?></option>
-                                <option value="3"><?= $situacao == 3 ? 'selected' : '' ?></option>
-                                
+                                <option value="0"<?= $situacao == 0 ? 'selected' : '' ?>>Todos</option>
+                                <option value="1"<?= $situacao == 1 ? 'selected' : '' ?>>Aguardando atendimento</option>
+                                <option value="2"<?= $situacao == 2 ? 'selected' : '' ?>>Em atendimento</option>
+                                <option value="3"<?= $situacao == 3 ? 'selected' : '' ?>>Finalizado</option>
+
                             </select>
 
                         </div>
-                        
+
                         <label id="val_modelo" class="Validar"></label>
 
-                        <center><button type="info" class="btn btn-info"  name="btnProcurar">Procurar</button></center>
-                        <hr/>
+                        <center><button type="info" class="btn btn-info"  name="btnPesquisar">Procurar</button></center>
 
                     </form>
+                    <hr/>
 
-                    <div class="col-md-12">
-                        <!-- Advanced Tables -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Funcionarios Cadastrados
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead>
-                                            <tr>
-                                                <th>Abertura</th>
-                                                <th>Equipamento</th>
-                                                <th>Problema</th>
-                                                <th>Situacao Abertura</th>
-                                                <th>Técnico Atendimento </th>
-                                                <th>Atendimento</th>
-                                                <th>Laudo</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="odd gradeX">
-                                                <td>Equipamento Solicitado</td>
-                                                <td>Status Abertura</td>
-                                                <td>Técnico Atendimento </td>
-                                                <td>Encerramento</td>
-                                                <td>Laudo</td>
-                                            </tr>
+                    <?php if (isset($chamados)) { ?>
 
-                                        </tbody>
-                                    </table>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- Advanced Tables -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Funcionarios Cadastrados
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Abertura</th>
+                                                        <th>Equipamento</th>
+                                                        <th>Problema</th>
+                                                        <th>Situacao Abertura</th>
+                                                        <th>Técnico Atendimento </th>
+                                                        <th>Atendimento</th>
+                                                        <th>Laudo</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php for($i=0; $i<count($chamados);$i++){ ?>
+                                                    
+                                                    <tr class="odd gradeX">
+                                                        <td><?= UtilCtrl::MostrarData($chamados[$i]['data_abertura'])?> <small>ás</small> <?= UtilCtrl::MostrarHora($chamados[$i]['hora_abertura'])?></td>
+                                                        <td><?= $chamados[$i]['identificacao_equipamento' ]?> / <?= $chamados[$i]['descricao_equipamento' ]?></td>
+                                                        <td><?= $chamados[$i]['descricao_problema']?></td>
+                                                        <td><?= UtilCtrl::RetornaSituacao($chamados[$i]['situacao'])?></td>
+                                                        <td><?= $chamados[$i]['nome_tecnico'] == '' ? '---' : $chamados[$i]['nome_tecnico']?></td>
+                                                        <td><?= $chamados[$i]['data_atendimento'] == '' ? '---' : UtilCtrl::MostrarData($chamados[$i]['data_atendimento']) . 'small>ás</small>' . UtilCtrl::MostrarHora($chamados[$i]['hora_atendimento']) ?></td>
+                                                        <td><?= $chamados[$i]['laudo_atendimento'] == '' ? '---' : $chamados[$i]['laudo_atendimento'] ?></td></td>
+                                                    </tr>
+                                                    
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
                                 </div>
-
+                                <!--End Advanced Tables -->
                             </div>
+
                         </div>
-                        <!--End Advanced Tables -->
-                    </div>
-
+                    <?php } ?>
                 </div>
-
             </div>
 
-        </div>
 
     </body>
 </html>
