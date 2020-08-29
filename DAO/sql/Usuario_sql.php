@@ -134,7 +134,8 @@ class Usuario_sql {
 
     public function ValidarLogin() {
 
- $sql = 'select us.senha_usuario,
+ $sql = 'select 
+                us.senha_usuario,
                 us.id_usuario,
                 us.tipo_usuario,
                 fu.id_setor,

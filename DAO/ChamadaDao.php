@@ -50,5 +50,22 @@ class ChamadaDao extends Conexao{
             return $sql->fetchAll();
 
         }
+        public function FiltrarChamadosTecnicos($sit) {
+            $conexao = parent::retornaConexao();
+            
+            $comando = Chamado_sql::FiltrarChamadosTecnicos($sit);
+            $sql = new PDOStatement();
+            $sql = $conexao->prepare($comando);
+            
+            if($sit != '0'){
+                $sql->bindValue(1, $sit);
+            }
+            $sql->setFetchMode(PDO::FETCH_ASSOC);
+            
+            $sql->execute();
+            
+            return $sql->fetchAll();
+
+        }
      
 }

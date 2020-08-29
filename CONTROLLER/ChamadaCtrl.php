@@ -32,6 +32,13 @@ class ChamadaCtrl{
              
  
    }
+   public function FiltrarChamadosTecnicos($sit) {
+       $dao = new ChamadaDao();
+       
+       return $dao->FiltrarChamadosTecnicos($sit);
+             
+ 
+   }
 
     
     

@@ -77,20 +77,29 @@ $tipo = UtilCtrl::RetornarTipoLogado();
 
                     </ul>
                 </li>  
-                <?php } elseif ($tipo == 2) { ?>
-                
-                        <li>
-                            <a href="func_meus_dados.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Meus Dados</a>
-                        </li>  
-                        <li>
-                            <a href="func_novo_chamado.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Abrir Chamado</a>
-                        </li>  
-                        <li>
-                            <a href="func_minhas_os.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Minhas OS</a>
-                        </li>  
+            <?php } elseif ($tipo == 2) { ?>
+
+                <li>
+                    <a href="func_meus_dados.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Meus Dados</a>
+                </li>  
+                <li>
+                    <a href="func_novo_chamado.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Abrir Chamado</a>
+                </li>  
+                <li>
+                    <a href="func_minhas_os.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Minhas OS</a>
+                </li>  
 
 
-            <?php } ?>
+            <?php } elseif ($tipo == 3) { ?>
+
+                <li>
+                    <a href="tec_meus_dados.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Meus Dados</a>
+                </li>  
+                <li>
+                    <a href="tec_consultar_chamados.php"><i class="fa fa-user fa-3x"></i><span class="menu-text-item"></span>Consultar Chamaddos</a>
+                </li>    
+
+            <?php } ?>           
             <li>
                 <a href="_menu.php?close=1"><i class="fa fa-square-o fa-3x"><span class="menu-text-item"></span></i>Sair</a>
             </li>	

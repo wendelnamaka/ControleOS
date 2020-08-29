@@ -1,1 +1,1 @@
-SELECT * FROM db_csc_doacao.tb_doacao;
+SELECT * FROM db_csc_doacao.tb_usuario;
