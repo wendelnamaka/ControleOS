@@ -1,4 +1,42 @@
-﻿<!DOCTYPE html>
+<?php
+require_once '../CONTROLLER/ChamadaCtrl.php';
+require_once '../VO/ChamadaVO.php';
+require_once '../CONTROLLER/UtilCtrl.php';
+
+$ctrl = new ChamadaCtrl();
+
+if (isset($_GET['cod']) && is_numeric($_GET['cod'])) {
+
+    $cod = $_GET['cod'];
+
+    $dados = $ctrl->DetalharChamados($cod);
+
+    if (count($dados) == 0) {
+
+        header('location: tec_consultar_chamados.php');
+    }
+} 
+else if(isset($_POST['btnAtender'])) {
+    $cod = $_POST['cod'];
+    $vo = new ChamadaVO();
+    $vo->setId_chamado($cod);
+    $ret = $ctrl->AtenderChamados($vo);
+    header('location: tec_atender_chamados.php?cod='. $cod . '&ret' . $ret);
+}else if($_POST['btnFinalizar']){
+    
+    $cod = $_POST['cod'];
+    $vo = new ChamadaVO();
+    $vo->setId_chamado($cod);
+    $vo->setLaudo_atendimento($_POST['laudo']);
+    $ret = $ctrl->FinalizarChamado($vo);
+    header('location: tec_atender_chamados.php?cod='. $cod . '&ret' . $ret);
+ 
+}else {
+    
+        header('location: tec_consultar_chamados.php');
+}
+?>﻿
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
 
@@ -24,59 +62,66 @@
                             if (isset($ret))
                                 ExibirMsg($ret);
                             ?>
-                           
 
                         </div> <h2>Atender Chamado</h2>
                     </div>
                     <!-- /. ROW  -->
                     <hr />
+                        <div class="col-md-6">
 
-                    <div class="col-md-6">
-                        <form method="post" action="realizar_movimento.php">  
                             <div class="form-group">
                                 <label>Data:</label>
-                                <input type="date" class="form-control" name="data_mov" disabled/>
+                                <input value="<?= UtilCtrl::MostrarData($dados[0]['data_abertura']) ?>" class="form-control" name="data_mov" disabled/>
                             </div>
 
                             <div class="form-group">
                                 <label>Funcionarios:</label>
-                                <input type="text"class="form-control" placeholder="Digite aqui" name="valor" disabled/>
+                                <input value="<?= ($dados[0]['nome_func_setor']) ?>" class="form-control" name="func" disabled/>
                             </div>
-                    </div>
-
-                    <div class="col-md-6">  <div class="form-group">
-
-                            <label>Setor:</label>
-                            <input type="text"class="form-control" placeholder="Digite aqui" name="valor" disabled/>
                         </div>
 
-                        <div class="form-group">
-                            <label>Equipamento:</label>
-                            <input type="text"class="form-control" placeholder="Digite aqui" name="valor" disabled/>
+                        <div class="col-md-6">  <div class="form-group">
+
+                                <label>Setor:</label>
+                                <input value="<?= ($dados[0]['nome_setor']) ?>" class="form-control" name="func" disabled/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Equipamento:</label>
+                                <input class="form-control" value="<?= $dados[0]['identificacao_equipamento']. '-' . $dados[0]['descricao_equipamento'] ?>" class="form-control" name="func" disabled/>
+                            </div>
+
+                        </div>   
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <textArea class="form-control" name="obs" disabled><?= ($dados[0]['descricao_problema']) ?></textArea>
+                                </textArea>
+                            </div>
                         </div>
-
-                    </div>   
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Descrição</label>
-                            <textArea class="form-control" name="obs" disabled></textArea>
-                            
-                </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
+                        
+                    <form method="post" action="tec_atender_chamado.php"> 
+                        <input type="hidden" name="cod" value="<?= $dados[0]['id_chamado']?>" />
+                        <?php if ($dados[0]['situacao'] == 1){?>
+                          <div class="form-group">
                             <label>Laudo</label>
-                            <textArea class="form-control" name="obs"></textArea>
-                            
-                </div>
-                    </div>
-                  
-                        <left>
-                            <button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button>
-                        </left>
-                        <hr />
-                    </form>
+                            <textArea class="form-control"<?=$dados[0]['situacao'] == 3 ? 'disable' : ''?> name="laudo" placeholder="Digite aqui"></textArea>
+                          </div>
+                         <?php }?>
+                        
+                        <?php if($dados[0]['situacao'] == 1){?>
+                        <button class="btn btn-warning" name="btnAtender">Atender</button>
+                        <?php } else if ($dados[0]['situacao'] == 2){?>
+                          <button class="btn btn-success" name="btnFinalizar">Finalizar</button>
+                          <?php
+                          
+                        } else{
+                             ExibirMsg(5);
+                          
+                          }
+                          ?>
+                   </form>
             </div>
          
         </div>

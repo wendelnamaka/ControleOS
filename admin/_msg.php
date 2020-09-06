@@ -41,5 +41,20 @@ function ExibirMsg($ret) {
             echo '<center><div class="alert alert-info"> Não foi encontrado nenhum registro</div></center>';
 
             break;
+        case 3:
+            
+            echo '<center><div class="alert alert-success"> Chamado atendido com sucesso </div></center>';
+
+            break;
+        case 4:
+
+            echo '<center><div class="alert alert-success">Chamado finalizado com sucesso </div></center>';
+
+            break;
+        case 5:
+
+            echo '<center><div class="alert alert-info">Chamado finalizado</div></center>';
+
+            break;
     }
 }
