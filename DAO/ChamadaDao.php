@@ -29,6 +29,18 @@ class ChamadaDao extends Conexao {
         }
     }
 
+    public function ResultadoGrafico() {
+        $conexao = parent::retornaConexao();
+        $comando = Chamado_sql::ResultadoGrafico();
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+
+        $sql->execute();
+
+        return $sql->fetchAll();
+    }
+
     public function FiltrarMeusChamados($idFunc, $sit) {
         $conexao = parent::retornaConexao();
 
@@ -71,7 +83,7 @@ class ChamadaDao extends Conexao {
         $comando = Chamado_sql::DetalharChamados();
         $sql = new PDOStatement();
         $sql = $conexao->prepare($comando);
-        
+
         $sql->bindValue(1, $id);
 
         $sql->setFetchMode(PDO::FETCH_ASSOC);
@@ -91,20 +103,22 @@ class ChamadaDao extends Conexao {
         $sql->bindValue(1, $vo->getSituacao());
         $sql->bindValue(2, $vo->getData_atendimento());
         $sql->bindValue(3, $vo->getHora_atendimento());
-        $sql->bindValue(4, $vo->getLaudo_atendimento());
-        $sql->bindValue(5, $vo->getId_funcionario_tecnico());
-        $sql->bindValue(6, $vo->getId_chamado());
+        $sql->bindValue(4, $vo->getId_funcionario_tecnico());
+        $sql->bindValue(5, $vo->getId_chamado());
 
         try {
 
             $sql->execute();
-            return 1;
+            return 3;
         } catch (Exception $ex) {
+
+
+            echo $ex->getMessage();
 
             return -1;
         }
     }
-    
+
     public function FinalizarChamado(ChamadaVO $vo) {
 
         $conexao = parent::retornaConexao();
@@ -122,7 +136,7 @@ class ChamadaDao extends Conexao {
         try {
 
             $sql->execute();
-            return 1;
+            return 4;
         } catch (Exception $ex) {
 
             return -1;

@@ -12,6 +12,17 @@ class Chamado_sql{
      return $sql;
      
     }
+    public static function ResultadoGrafico() {
+        
+     $sql = 'select   
+                    (select count(*) from tb_chamado where situacao = 1) as qtd_aguarde,
+                    (select count(*) from tb_chamado where situacao = 2) as qtd_atendimento,
+                    (select count(*) from tb_chamado where situacao = 3) as qtd_finalizado
+                    from tb_chamado'; 
+
+     return $sql;
+     
+    }
     
    
     public static function FiltrarMeusChamados($sit) {
@@ -126,22 +137,23 @@ class Chamado_sql{
                 situacao = ?,
                 data_atendimento = ?,
                 hora_atendimento = ?,
-                id_funcionario_tecnico = ?,
-                where id_chamado = ?
-                 ' ;
+                id_funcionario_tecnico = ?
+                where id_chamado = ?' ;
+                 
         return $sql;
 
      }          
      public static function FinalizarChamado() {
 
          $sql =' UPDATE tb_chamado set
+             
                 situacao = ?,
                 data_atendimento = ?,
                 hora_atendimento = ?,
-                laudo_atendimento = ?,
-                id_funcionario_tecnico = ?
-                where id_chamado = ?
-                 ' ;
+                id_funcionario_tecnico = ?,
+                laudo_atendimento = ?
+                where id_chamado = ?';
+                 
         return $sql;
 
      }          

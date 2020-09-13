@@ -21,15 +21,15 @@ else if(isset($_POST['btnAtender'])) {
     $vo = new ChamadaVO();
     $vo->setId_chamado($cod);
     $ret = $ctrl->AtenderChamados($vo);
-    header('location: tec_atender_chamados.php?cod='. $cod . '&ret' . $ret);
-}else if($_POST['btnFinalizar']){
+   header('location: tec_atender_chamados.php?cod='. $cod . '&ret=' . $ret);
+}else if(isset($_POST['btnFinalizar'])){
     
     $cod = $_POST['cod'];
     $vo = new ChamadaVO();
     $vo->setId_chamado($cod);
     $vo->setLaudo_atendimento($_POST['laudo']);
     $ret = $ctrl->FinalizarChamado($vo);
-    header('location: tec_atender_chamados.php?cod='. $cod . '&ret' . $ret);
+    header('location: tec_atender_chamado.php?ret=' . $ret);
  
 }else {
     
@@ -59,8 +59,9 @@ else if(isset($_POST['btnAtender'])) {
 
                         <div class="col-md-6">  
                             <?php
-                            if (isset($ret))
-                                ExibirMsg($ret);
+                            if (isset($_GET['ret'])){
+                                ExibirMsg($_GET['ret']);
+                            }
                             ?>
 
                         </div> <h2>Atender Chamado</h2>
@@ -103,10 +104,11 @@ else if(isset($_POST['btnAtender'])) {
                         
                     <form method="post" action="tec_atender_chamado.php"> 
                         <input type="hidden" name="cod" value="<?= $dados[0]['id_chamado']?>" />
-                        <?php if ($dados[0]['situacao'] == 1){?>
+                        <?php if ($dados[0]['situacao'] != 1){?>
+                          <div class="col-md-12">
                           <div class="form-group">
                             <label>Laudo</label>
-                            <textArea class="form-control"<?=$dados[0]['situacao'] == 3 ? 'disable' : ''?> name="laudo" placeholder="Digite aqui"></textArea>
+                            <textArea class="form-control"<?=$dados[0]['situacao'] == 3 ? 'disabled' : ''?>  placeholder="Digite aqui" name="laudo"><?= $dados[0]['laudo_atendimento']?></textArea>
                           </div>
                          <?php }?>
                         
@@ -123,7 +125,7 @@ else if(isset($_POST['btnAtender'])) {
                           ?>
                    </form>
             </div>
-         
+           </div>
         </div>
   
   

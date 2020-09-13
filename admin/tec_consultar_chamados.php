@@ -41,7 +41,7 @@ if (isset($_POST['btnPesquisar'])) {
                         <div class="form-group" id="divModelo">
 
                             <select class="form-control" name="situacao">
-                                <option value="0"//<?= $situacao == 0 ? 'selected' : '' ?>>Todos</option>
+                                <option value="0"<?= $situacao == 0 ? 'selected' : '' ?>>Todos</option>
                                 <option value="1"<?= $situacao == 1 ? 'selected' : '' ?>>Aguardando atendimento</option>
                                 <option value="2"<?= $situacao == 2 ? 'selected' : '' ?>>Em atendimento</option>
                                 <option value="3"<?= $situacao == 3 ? 'selected' : '' ?>>Finalizado</option>
@@ -95,7 +95,7 @@ if (isset($_POST['btnPesquisar'])) {
                                                             <td><?= $chamados[$i]['descricao_problema'] ?></td>
                                                             <td><?= UtilCtrl::RetornaSituacao($chamados[$i]['situacao']) ?></td>
                                                             <td><?= $chamados[$i]['nome_tecnico'] == '' ? '---' : $chamados[$i]['nome_tecnico'] ?></td>
-                                                            <td><?= $chamados[$i]['data_atendimento'] == '' ? '---' : UtilCtrl::MostrarData($chamados[$i]['data_atendimento']) . 'small>ás</small>' . UtilCtrl::MostrarHora($chamados[$i]['hora_atendimento']) ?></td>
+                                                            <td><?= $chamados[$i]['data_atendimento'] == '' ? '---' : UtilCtrl::MostrarData($chamados[$i]['data_atendimento']) . '<small>ás</small>' . UtilCtrl::MostrarHora($chamados[$i]['hora_atendimento']) ?></td>
                                                             <td><?= $chamados[$i]['laudo_atendimento'] == '' ? '---' : $chamados[$i]['laudo_atendimento'] ?></td></td>
                                                             <td>
                                                                 <a href="tec_atender_chamado.php?cod=<?= $chamados[$i]['id_chamado'] ?>" class="btn btn-info btn-xs">Visualizar</a> 

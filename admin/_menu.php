@@ -14,11 +14,13 @@ $tipo = UtilCtrl::RetornarTipoLogado();
         <ul class="nav" id="main-menu">
 
             <?php if ($tipo == 1) { ?>
-
                 <li class="text-center">
                     <img src="assets/img/girls.png" class="user-image img-responsive"/>
-                </li>           	
-
+                </li> 
+                <li>
+                    <a href="adm_inicial.php"><i class="fa fa-home fa-3x"><span class="menu-text-item"></span></i>Inicio</a>
+                </li>
+                      	
                 <li>
                     <a href="#"><i class="fa fa-sitemap fa-3x"></i>Setor<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">

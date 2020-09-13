@@ -61,13 +61,14 @@ $dados = $ctrl->CarregarDadosUsuario();
                             <input class="form-control" placeholder="Digite o seu email" name="email" value="<?= $dados[0]['email_funcionario'] ?>"/>
                         </div>
                         <div class="form-group">
-                            <label>Telefone</label>
-                            <input class="form-control" placeholder="Digite o seu telefone" name="telefone" value="<?= $dados[0]['telefone_funcionario'] ?>"/>
-                        </div>
-                        <div class="form-group">
                             <label>Endereco</label>
                             <input class="form-control" placeholder="Digite o seu  endereço" name="endereco" value="<?= $dados[0]['endereco_funcionario'] ?>"/>
                         </div>
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input class="form-control" placeholder="Digite o seu telefone" name="telefone" value="<?= $dados[0]['telefone_funcionario'] ?>"/>
+                        </div>
+
 
                         <center><button type="submit" class="btn btn-success" name="btnSalvar">Salvar</button></center>
 

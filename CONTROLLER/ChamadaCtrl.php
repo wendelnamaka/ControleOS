@@ -60,5 +60,11 @@ class ChamadaCtrl {
 
         return $dao->DetalharChamados($id);
     }
+    
+     public function ResultadoGrafico() {
+        $dao = new ChamadaDao();
+
+        return $dao->ResultadoGrafico();
+    }
 
 }
