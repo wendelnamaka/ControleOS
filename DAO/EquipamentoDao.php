@@ -173,4 +173,20 @@ class EquipamentoDao extends Conexao {
         }
     }
 
+    public function ConsultarEquipamento($idAdm) {
+        $conexao = parent::retornaConexao();
+
+        $comando = Equipamento_sql::ConsultarEquipamento();
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+
+        $sql->bindValue(1, $idAdm);
+
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+
+        $sql->execute();
+
+        return $sql->fetchAll();
+    }
+
 }

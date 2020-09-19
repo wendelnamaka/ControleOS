@@ -93,6 +93,23 @@ class ChamadaDao extends Conexao {
         return $sql->fetchAll();
     }
 
+    public function DetalharHistoricoChamados($idEquip) {
+        $conexao = parent::retornaConexao();
+
+        $comando = Chamado_sql::DetalharHistoricoChamados();
+        $sql = new PDOStatement();
+        $sql = $conexao->prepare($comando);
+        
+        $sql->bindValue(1,$idEquip);
+        
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+
+        $sql->execute();
+
+        return $sql->fetchAll();
+    }
+
+
     public function AtenderChamado(ChamadaVO $vo) {
 
         $conexao = parent::retornaConexao();

@@ -79,5 +79,15 @@ class EquipamentoCtrl {
 
         return $dao->RemoverEquipamento($vo);
     }
+        
+     public function ConsultarEquipamento() {
+        $dao = new EquipamentoDao();
+
+        return $dao->ConsultarEquipamento(UtilCtrl::RetornarCodigoLogadoAdm());
+         
+     }
+    
+    
+    
 
 }

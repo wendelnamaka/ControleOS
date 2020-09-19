@@ -115,6 +115,21 @@ class Equipamento_sql {
         return $sql;
     }
 
+    public static function ConsultarEquipamento() {
+
+        $sql = 'select 
+                        eq.id_equipamento,
+                        identificacao_equipamento,
+                        descricao_equipamento
+                        
+                        from
+                            tb_equipamento as eq
+                            where 
+                            eq.id_usuario = ?';
+
+        return $sql;
+    }
+    
     public static function DetalharEquipamento() {
 
         $sql = 'select 

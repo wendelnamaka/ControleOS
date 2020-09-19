@@ -135,14 +135,14 @@ $setor = $ctrl_set->ConsultarSetor();
                                                             <td>
                                                                 <a href="#" class="btn btn-warning btn-xs" data-toggle="modal"  data-target="#<?= $usuarios[$i]['tipo_usuario'] == 1 ? 'modalAlterarAdm' : 'modAlterarFunc' ?>" 
                                                                    onclick="return CarregarModal
-                                                                                               ('<?= $usuarios[$i]['tipo_usuario'] ?>',
-                                                                                                       '<?= $usuarios[$i]['id_usuario'] ?>',
-                                                                                                       '<?= $usuarios[$i]['nome_usuario'] ?>',
-                                                                                                       '<?= $usuarios[$i]['sobrenome'] ?>',
-                                                                                                       '<?= $usuarios[$i]['id_setor'] ?>',
-                                                                                                       '<?= $usuarios[$i]['email_funcionario'] ?>',
-                                                                                                       '<?= $usuarios[$i]['telefone_funcionario'] ?>',
-                                                                                                       '<?= $usuarios[$i]['endereco_funcionario'] ?>')">Alterar</a>
+                                                                    ('<?= $usuarios[$i]['tipo_usuario'] ?>',
+                                                                    '<?= $usuarios[$i]['id_usuario'] ?>',
+                                                                    '<?= $usuarios[$i]['nome_usuario'] ?>',
+                                                                    '<?= $usuarios[$i]['sobrenome'] ?>',
+                                                                    '<?= $usuarios[$i]['id_setor'] ?>',
+                                                                    '<?= $usuarios[$i]['email_funcionario'] ?>',
+                                                                    '<?= $usuarios[$i]['telefone_funcionario'] ?>',
+                                                                    '<?= $usuarios[$i]['endereco_funcionario'] ?>')">Alterar</a>
 
 
                                                             </td>

@@ -67,7 +67,7 @@ class Chamado_sql{
                               
                               where 
                               
-                              ch.id_funcionario_setor = ?
+                          ch.id_funcionario_setor = ?
 ';   
 
                         if ($sit != '0') {
@@ -206,6 +206,36 @@ class Chamado_sql{
                               
                               ';   
 
+        return $sql;
+     
+    }     
+       
+    public static function DetalharHistoricoChamados() {
+        
+     $sql = 'select
+                    ch.id_equipamento,
+                    ch.data_abertura,
+                    ch.hora_abertura,
+                    ch.descricao_problema,
+                    ch.situacao,
+                    ch.data_atendimento,
+                    ch.hora_atendimento,
+                    ch.laudo_atendimento,
+                    eq.identificacao_equipamento,
+                    eq.descricao_equipamento
+
+                    from tb_chamado as ch 
+
+                         inner join 
+                    
+                    tb_equipamento as eq 
+                              
+                         on 
+                              
+                    ch.id_equipamento = eq.id_equipamento
+                              
+                     where ch.id_equipamento = ? order by  ch.id_chamado desc';   
+                             
         return $sql;
      
     }     

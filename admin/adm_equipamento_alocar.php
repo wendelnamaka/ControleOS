@@ -20,10 +20,6 @@ if (isset($_POST['btnAlocar'])) {
     $vo->setId_setor($_POST['setor']);
     $vo->setId_Equipamento($_POST['equipamento']);
 
-    echo "<pre>";
-    print_r($vo);
-    echo "</pre>";
-
     $ret = $ctrl_equ->AlocarSetorEquipamento($vo);
 }
 

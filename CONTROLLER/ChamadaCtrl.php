@@ -61,6 +61,14 @@ class ChamadaCtrl {
         return $dao->DetalharChamados($id);
     }
     
+     public function DetalharHistoricoChamados($idEquip) {
+          $dao = new ChamadaDao();
+
+        return $dao->DetalharHistoricoChamados($idEquip);
+         
+     }
+
+    
      public function ResultadoGrafico() {
         $dao = new ChamadaDao();
 
